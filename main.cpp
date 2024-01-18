@@ -1,4 +1,5 @@
 #include "JsonParse/JsonParse.h"
+#include "DataExploration/DataExploration.h"
 
 int main() {
     std::string filePath = "IDRdataset.json";
@@ -8,12 +9,10 @@ int main() {
         return 1;
     }
 
-    std::vector<ProteinData> data = parseJsonArray(jsonContent);
+    std::vector<Protein> data = parseJsonArray(jsonContent);
 
     for (const auto& d : data) {
-        std::cout << "ID: " << d.id << std::endl;
-        std::cout << "Sequence: " << d.sequence << std::endl;
-        std::cout << "Reference: " << d.reference << std::endl;
+        d.toString();
         std::cout << "-------------------" << std::endl;
     }
 

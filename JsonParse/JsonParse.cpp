@@ -4,15 +4,14 @@
 #include "JsonParse.h"
 #include <fstream>
 #include <sstream>
-using namespace std;
 
-ProteinData parseJson(const string& protein) {
-    ProteinData data;
-    stringstream ss(protein);
-    string temp, key, value;
+Protein parseJson(const std::string& protein) {
+    Protein data;
+    std::stringstream ss(protein);
+    std::string temp, key, value;
 
     while (getline(ss, temp, ',')) {
-        stringstream pairStream(temp);
+        std::stringstream pairStream(temp);
         getline(pairStream, key, ':');
         getline(pairStream, value, ':');
         value.erase(remove(value.begin(), value.end(), '"'), value.end());
@@ -20,20 +19,20 @@ ProteinData parseJson(const string& protein) {
         value.erase(remove(value.begin(), value.end(), '{'), value.end());
         value.erase(remove(value.begin(), value.end(), ' '), value.end());
 
-        if (key.find("id") != string::npos) data.id = value;
-        else if (key.find("sequence") != string::npos) data.sequence = value;
-        else if (key.find("reference") != string::npos) data.reference = value;
+        if (key.find("id") != std::string::npos) data.setId(value);
+        else if (key.find("sequence") != std::string::npos) data.setSequence(value);
+        else if (key.find("reference") != std::string::npos) data.setReference(value);
     }
     return data;
 }
 
-vector<ProteinData> parseJsonArray(const string& jsonString) {
-    vector<ProteinData> dataArray;
-    stringstream ss(jsonString);
-    string token;
+std::vector<Protein> parseJsonArray(const std::string& jsonString) {
+    std::vector<Protein> dataArray;
+    std::stringstream ss(jsonString);
+    std::string token;
 
     while (getline(ss, token, '}')) {
-        if (token.find('{') != string::npos) {
+        if (token.find('{') != std::string::npos) {
             token += '}';
             dataArray.push_back(parseJson(token));
         }
@@ -41,11 +40,11 @@ vector<ProteinData> parseJsonArray(const string& jsonString) {
     return dataArray;
 }
 
-string readFileIntoString(const string& path) {
-    ifstream input_file(path);
+std::string readFileIntoString(const std::string& path) {
+    std::ifstream input_file(path);
     if (!input_file.is_open()) {
-        cerr << "Could not open the file - '" << path << "'" << endl;
+        std::cerr << "Could not open the file - '" << path << "'" << std::endl;
         return "";
     }
-    return {(istreambuf_iterator<char>(input_file)), istreambuf_iterator<char>()};
+    return {(std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>()};
 }

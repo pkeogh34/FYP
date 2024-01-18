@@ -58,6 +58,18 @@ build CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o: CXX_COMPILER__FYP_Debug /Use
   OBJECT_DIR = CMakeFiles/FYP.dir
   OBJECT_FILE_DIR = CMakeFiles/FYP.dir/JsonParse
 
+build CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o: CXX_COMPILER__FYP_Debug /Users/patrickkeogh/CLionProjects/FYP/DataExploration/DataExploration.cpp || cmake_object_order_depends_target_FYP
+  DEP_FILE = CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -std=gnu++2b
+  OBJECT_DIR = CMakeFiles/FYP.dir
+  OBJECT_FILE_DIR = CMakeFiles/FYP.dir/DataExploration
+
+build CMakeFiles/FYP.dir/Protein/Protein.cpp.o: CXX_COMPILER__FYP_Debug /Users/patrickkeogh/CLionProjects/FYP/Protein/Protein.cpp || cmake_object_order_depends_target_FYP
+  DEP_FILE = CMakeFiles/FYP.dir/Protein/Protein.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -std=gnu++2b
+  OBJECT_DIR = CMakeFiles/FYP.dir
+  OBJECT_FILE_DIR = CMakeFiles/FYP.dir/Protein
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target FYP
@@ -66,7 +78,7 @@ build CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o: CXX_COMPILER__FYP_Debug /Use
 #############################################
 # Link the executable FYP
 
-build FYP: CXX_EXECUTABLE_LINKER__FYP_Debug CMakeFiles/FYP.dir/main.cpp.o CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o
+build FYP: CXX_EXECUTABLE_LINKER__FYP_Debug CMakeFiles/FYP.dir/main.cpp.o CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o CMakeFiles/FYP.dir/Protein/Protein.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk
   OBJECT_DIR = CMakeFiles/FYP.dir
   POST_BUILD = :

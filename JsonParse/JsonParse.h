@@ -7,15 +7,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "../Protein/Protein.h"
 
-struct ProteinData {
-    std::string id;
-    std::string sequence;
-    std::string reference;
-};
-
-ProteinData parseJson(const std::string& protein);
-std::vector<ProteinData> parseJsonArray(const std::string& jsonString);
+Protein parseJson(const std::string& protein);
+std::vector<Protein> parseJsonArray(const std::string& jsonString);
 std::string readFileIntoString(const std::string& path);
 
 #endif // JSONPARSE_H
