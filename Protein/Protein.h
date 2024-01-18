@@ -29,7 +29,7 @@ public:
 
     std::unordered_map<char, int> aminoAcidFrequency() const;
 
-    double percentageOfDisorder() const;
+    double percentageDisorder() const;
 
     void toString() const;
 

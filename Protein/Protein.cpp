@@ -40,8 +40,8 @@ std::unordered_map<char, int> Protein::aminoAcidFrequency() const {
     return frequency;
 }
 
-double Protein::percentageOfDisorder() const {
-    int disorderCount = std::count(reference.begin(), reference.end(), '0');
+double Protein::percentageDisorder() const {
+    int disorderCount = std::count(reference.begin(), reference.end(), '1');
     return 100.0 * disorderCount / sequenceLength();
 }
 
