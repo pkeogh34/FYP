@@ -1,77 +1,37 @@
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <vector>
-#include <sstream>
-using namespace std;
-
-struct ProteinData {
-    string id;
-    string sequence;
-    string reference;
-};
-
-ProteinData parseJson(const string& protein) {
-    ProteinData data;
-    stringstream ss(protein);
-    string temp, key, value;
-
-    while (getline(ss, temp, ',')) {
-        stringstream pairStream(temp);
-        getline(pairStream, key, ':');
-        getline(pairStream, value, ':');
-        value.erase(remove(value.begin(), value.end(), '"'), value.end());
-        value.erase(remove(value.begin(), value.end(), '}'), value.end());
-        value.erase(remove(value.begin(), value.end(), '{'), value.end());
-        value.erase(remove(value.begin(), value.end(), ' '), value.end());
-
-        if (key.find("id") != string::npos) data.id = value;
-        else if (key.find("sequence") != string::npos) data.sequence = value;
-        else if (key.find("reference") != string::npos) data.reference = value;
-    }
-    return data;
-}
-
-vector<ProteinData> parseJsonArray(const string& jsonString) {
-    vector<ProteinData> dataArray;
-    stringstream ss(jsonString);
-    string token;
-
-    while (getline(ss, token, '}')) {
-        if (token.find('{') != string::npos) {
-            token += '}';
-            dataArray.push_back(parseJson(token));
-        }
-    }
-    return dataArray;
-}
-
-string readFileIntoString(const string& path) {
-    ifstream input_file(path);
-    if (!input_file.is_open()) {
-        cerr << "Could not open the file - '" << path << "'" << endl;
-        return "";
-    }
-    return {(istreambuf_iterator<char>(input_file)), istreambuf_iterator<char>()};
-}
+#include "JsonParse/JsonParse.h"
+#include "DataExploration/DataExploration.h"
 
 int main() {
-    string filePath = "IDRdataset.json";
-    string jsonContent = readFileIntoString(filePath);
+    std::string filePath = "IDRdataset.json";
+    std::string jsonContent = readFileIntoString(filePath);
     if (jsonContent.empty()) {
-        cerr << "Failed to read JSON file." << endl;
+        std::cerr << "Failed to read JSON file." << std::endl;
         return 1;
     }
 
-    vector<ProteinData> data = parseJsonArray(jsonContent);
+    std::vector<Protein> data = parseJsonArray(jsonContent);
 
-    for (const auto& d : data) {
-        cout << "ID: " << d.id << endl;
-        cout << "Sequence: " << d.sequence << endl;
-        cout << "Reference: " << d.reference << endl;
-        cout << "-------------------" << endl;
+    for (const auto& protein : data) {
+        protein.toString();
+        std::cout << "Percentage disorder: " << protein.percentageDisorder() << std::endl;
+        std::cout << "-------------------" << std::endl;
     }
+
+    std::cout << "Average protein length: " << avgProteinLength(data) << std::endl;
+    std::cout << "Average protein disorder: " << avgDisorder(data) << "\n" << std::endl;
+    std::cout << "Most disordered protein" << std::endl;
+    mostDisorderedProtein(data).toString();
+    std::cout << "Percentage disorder: " << mostDisorderedProtein(data).percentageDisorder() << "\n" << std::endl;
+    std::unordered_map<char, int> frequency = disorderFrequencyOfAminoAcids(data);
+    int total = totalNumAminoAcids(data);
+    std::cout << "Disorder probability for each amino acid" << std::endl;
+    for(const auto& aa : frequency){
+        double probability = static_cast<double>(aa.second) / total * 100.0;
+        std::cout << aa.first << ": " << probability << std::endl;
+    }
+
 
     return 0;
 }
+
 

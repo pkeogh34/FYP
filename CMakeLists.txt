@@ -3,4 +3,4 @@ project(FYP)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(FYP main.cpp)
+add_executable(FYP main.cpp JsonParse/JsonParse.h JsonParse/JsonParse.cpp DataExploration/DataExploration.h DataExploration/DataExploration.cpp Protein/Protein.cpp Protein/Protein.h)
