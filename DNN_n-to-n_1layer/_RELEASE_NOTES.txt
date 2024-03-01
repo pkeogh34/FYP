@@ -1,0 +1,5 @@
+16/12/2020
+Fixed overflow bug in Layer.cxx whereby saturated units would provide more gradient than barely unsaturated ones.
+
+26/1/2022
+Layer.* with fixed backprop bug have now replaced older ones.

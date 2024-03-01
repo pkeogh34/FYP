@@ -1,0 +1,23 @@
+epsilon 0.002
+NLayers 3
+NU	21
+Ht	25 20 15
+NHi	15
+Hi	9
+
+gamma	7
+context 0
+
+Classes 3
+Thresholds 0.5 1.5
+
+DEEP	0
+
+seed    949
+shuffle 1
+batch_blocks 4336
+readModel    0
+readEpoch    0
+nEpochs      5000
+adaptive     10000
+reload       1

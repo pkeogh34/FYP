@@ -1,0 +1,32 @@
+epsilon 0.01
+NU	21
+NF      20
+NB      20
+NHY     25
+NHF     22
+NHB     22
+
+context 0
+Moore   1
+CoF     3
+CoB     3
+
+Cseg    10
+Cwin    7
+cycles  1
+
+Classes 3
+Thresholds 0.5 1.5
+
+Step    1
+shortcut 0
+seed    949
+shuffle 1
+batch_blocks 4336
+readModel    0
+readEpoch    0
+nEpochs      2000
+adaptive     1000
+reload       0
+belief       0
+threshold    0

@@ -1,0 +1,11 @@
+
+Create NNt1 and NN1 wrapping Layer
+
+Leave input-to-hidden net as NNt (for the moment)
+
+
+Progress:
+
+-updated names in DNN1.h and DNN1.cxx (DNN->DNN1)
+-removed NHo and NHt in DNN1.h and beginning of DNN1.cxx
+

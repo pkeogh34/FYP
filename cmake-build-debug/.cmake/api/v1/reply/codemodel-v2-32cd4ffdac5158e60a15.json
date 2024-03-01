@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "FYP",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -39,8 +41,15 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "FYP::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-FYP-Debug-d1bf9715d0106c96f7c1.json",
+					"jsonFile" : "target-FYP-Debug-904d0be543e2644cd8c3.json",
 					"name" : "FYP",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pack::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pack-Debug-26904a5b0aed8e98d4fd.json",
+					"name" : "pack",
 					"projectIndex" : 0
 				}
 			]

@@ -1,0 +1,30 @@
+OBJECTST = Layer.o Model.o DNN.o NNt.o NN.o Train_inc.o
+HEADERST = Layer.h Model.h DNN.h NNt.h NN.h Sequence.h 
+
+CC	= g++
+CFLAGS  = -O3 -fopenmp
+
+Train_inc :	$(OBJECTST) 
+	$(CC) $(CFLAGS) -o $@ $(OBJECTST) $(LLIBS)
+
+Train_inc.o : Train_inc.cxx $(HEADERST)
+	$(CC) -c $(CFLAGS) $*.cxx
+
+Layer.o : Layer.cxx $(HEADERST)
+	$(CC) -c $(CFLAGS) $*.cxx
+
+Model.o : Model.cxx $(HEADERST)
+	$(CC) -c $(CFLAGS) $*.cxx
+
+NNt.o : NNt.cxx $(HEADERST)
+	$(CC) -c $(CFLAGS) $*.cxx
+
+NN.o : NN.cxx $(HEADERST)
+	$(CC) -c $(CFLAGS) $*.cxx
+	
+DNN.o : DNN.cxx $(HEADERST)
+	$(CC) -c $(CFLAGS) $*.cxx
+
+
+clean:
+	rm *.o Train

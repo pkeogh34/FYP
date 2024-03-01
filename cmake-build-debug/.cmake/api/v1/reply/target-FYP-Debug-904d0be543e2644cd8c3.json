@@ -10,7 +10,8 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_executable",
+			"include_directories"
 		],
 		"files" : 
 		[
@@ -24,7 +25,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
+				"line" : 61,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
 				"line" : 6,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 8,
 				"parent" : 0
 			}
 		]
@@ -35,10 +54,25 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk"
+					"fragment" : "-g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk"
 				},
 				{
 					"fragment" : "-std=gnu++2b"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer"
 				}
 			],
 			"language" : "CXX",

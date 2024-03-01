@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="FYP"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pack">
+				<Option output="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/pack" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1"/>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN"/>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 pack"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pack/fast">
+				<Option output="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/pack" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1"/>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN"/>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 pack/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FYP">
+				<Option output="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/FYP" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1"/>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN"/>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 FYP"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FYP/fast">
+				<Option output="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/FYP" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1"/>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN"/>
+					<Add directory="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 FYP/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/BRNN.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/BRNN.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Layer.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Layer.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Model.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Model.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/NN.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/NN.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/NNt.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/NNt.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Sequence.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Train.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/BRNN.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/BRNN.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/BRNNr.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/BRNNr.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Layer.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Layer.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/MModel.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/MModel.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Model.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Model.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NN.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NN.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NNr.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NNr.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NNt.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NNt.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Predict.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Predict_thresholds.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Sequence.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Train.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/DNN1.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/DNN1.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Layer.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Layer.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Model.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Model.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NN.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NN.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NN1.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NN1.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NNt.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NNt.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NNt1.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NNt1.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Sequence.h">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Train.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Train_inc.cxx">
+			<Option target="pack"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DataExploration/DataExploration.cpp">
+			<Option target="FYP"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DataExploration/DataExploration.h">
+			<Option target="FYP"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/JsonParse/JsonParse.cpp">
+			<Option target="FYP"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/JsonParse/JsonParse.h">
+			<Option target="FYP"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/Protein/Protein.cpp">
+			<Option target="FYP"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/Protein/Protein.h">
+			<Option target="FYP"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/main.cpp">
+			<Option target="FYP"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
