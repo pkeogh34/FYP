@@ -73,64 +73,79 @@ CMakeFiles/FYP.dir/main.cpp.o: CMakeFiles/FYP.dir/flags.make
 CMakeFiles/FYP.dir/main.cpp.o: ../main.cpp
 CMakeFiles/FYP.dir/main.cpp.o: CMakeFiles/FYP.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FYP.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FYP.dir/main.cpp.o -MF CMakeFiles/FYP.dir/main.cpp.o.d -o CMakeFiles/FYP.dir/main.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/main.cpp
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FYP.dir/main.cpp.o -MF CMakeFiles/FYP.dir/main.cpp.o.d -o CMakeFiles/FYP.dir/main.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/main.cpp
 
 CMakeFiles/FYP.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FYP.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/patrickkeogh/CLionProjects/FYP/main.cpp > CMakeFiles/FYP.dir/main.cpp.i
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/patrickkeogh/CLionProjects/FYP/main.cpp > CMakeFiles/FYP.dir/main.cpp.i
 
 CMakeFiles/FYP.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FYP.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/patrickkeogh/CLionProjects/FYP/main.cpp -o CMakeFiles/FYP.dir/main.cpp.s
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/patrickkeogh/CLionProjects/FYP/main.cpp -o CMakeFiles/FYP.dir/main.cpp.s
 
 CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o: CMakeFiles/FYP.dir/flags.make
 CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o: ../JsonParse/JsonParse.cpp
 CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o: CMakeFiles/FYP.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o -MF CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o.d -o CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/JsonParse/JsonParse.cpp
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o -MF CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o.d -o CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/JsonParse/JsonParse.cpp
 
 CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/patrickkeogh/CLionProjects/FYP/JsonParse/JsonParse.cpp > CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.i
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/patrickkeogh/CLionProjects/FYP/JsonParse/JsonParse.cpp > CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.i
 
 CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/patrickkeogh/CLionProjects/FYP/JsonParse/JsonParse.cpp -o CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.s
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/patrickkeogh/CLionProjects/FYP/JsonParse/JsonParse.cpp -o CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.s
 
 CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o: CMakeFiles/FYP.dir/flags.make
 CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o: ../DataExploration/DataExploration.cpp
 CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o: CMakeFiles/FYP.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o -MF CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o.d -o CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/DataExploration/DataExploration.cpp
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o -MF CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o.d -o CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/DataExploration/DataExploration.cpp
 
 CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/patrickkeogh/CLionProjects/FYP/DataExploration/DataExploration.cpp > CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.i
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/patrickkeogh/CLionProjects/FYP/DataExploration/DataExploration.cpp > CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.i
 
 CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/patrickkeogh/CLionProjects/FYP/DataExploration/DataExploration.cpp -o CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.s
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/patrickkeogh/CLionProjects/FYP/DataExploration/DataExploration.cpp -o CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.s
 
 CMakeFiles/FYP.dir/Protein/Protein.cpp.o: CMakeFiles/FYP.dir/flags.make
 CMakeFiles/FYP.dir/Protein/Protein.cpp.o: ../Protein/Protein.cpp
 CMakeFiles/FYP.dir/Protein/Protein.cpp.o: CMakeFiles/FYP.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FYP.dir/Protein/Protein.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FYP.dir/Protein/Protein.cpp.o -MF CMakeFiles/FYP.dir/Protein/Protein.cpp.o.d -o CMakeFiles/FYP.dir/Protein/Protein.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/Protein/Protein.cpp
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FYP.dir/Protein/Protein.cpp.o -MF CMakeFiles/FYP.dir/Protein/Protein.cpp.o.d -o CMakeFiles/FYP.dir/Protein/Protein.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/Protein/Protein.cpp
 
 CMakeFiles/FYP.dir/Protein/Protein.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FYP.dir/Protein/Protein.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/patrickkeogh/CLionProjects/FYP/Protein/Protein.cpp > CMakeFiles/FYP.dir/Protein/Protein.cpp.i
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/patrickkeogh/CLionProjects/FYP/Protein/Protein.cpp > CMakeFiles/FYP.dir/Protein/Protein.cpp.i
 
 CMakeFiles/FYP.dir/Protein/Protein.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FYP.dir/Protein/Protein.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/patrickkeogh/CLionProjects/FYP/Protein/Protein.cpp -o CMakeFiles/FYP.dir/Protein/Protein.cpp.s
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/patrickkeogh/CLionProjects/FYP/Protein/Protein.cpp -o CMakeFiles/FYP.dir/Protein/Protein.cpp.s
+
+CMakeFiles/FYP.dir/ChangeFormat.cpp.o: CMakeFiles/FYP.dir/flags.make
+CMakeFiles/FYP.dir/ChangeFormat.cpp.o: ../ChangeFormat.cpp
+CMakeFiles/FYP.dir/ChangeFormat.cpp.o: CMakeFiles/FYP.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FYP.dir/ChangeFormat.cpp.o"
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FYP.dir/ChangeFormat.cpp.o -MF CMakeFiles/FYP.dir/ChangeFormat.cpp.o.d -o CMakeFiles/FYP.dir/ChangeFormat.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/ChangeFormat.cpp
+
+CMakeFiles/FYP.dir/ChangeFormat.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FYP.dir/ChangeFormat.cpp.i"
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/patrickkeogh/CLionProjects/FYP/ChangeFormat.cpp > CMakeFiles/FYP.dir/ChangeFormat.cpp.i
+
+CMakeFiles/FYP.dir/ChangeFormat.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FYP.dir/ChangeFormat.cpp.s"
+	/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/patrickkeogh/CLionProjects/FYP/ChangeFormat.cpp -o CMakeFiles/FYP.dir/ChangeFormat.cpp.s
 
 # Object files for target FYP
 FYP_OBJECTS = \
 "CMakeFiles/FYP.dir/main.cpp.o" \
 "CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o" \
 "CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o" \
-"CMakeFiles/FYP.dir/Protein/Protein.cpp.o"
+"CMakeFiles/FYP.dir/Protein/Protein.cpp.o" \
+"CMakeFiles/FYP.dir/ChangeFormat.cpp.o"
 
 # External object files for target FYP
 FYP_EXTERNAL_OBJECTS =
@@ -139,9 +154,10 @@ FYP: CMakeFiles/FYP.dir/main.cpp.o
 FYP: CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o
 FYP: CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o
 FYP: CMakeFiles/FYP.dir/Protein/Protein.cpp.o
+FYP: CMakeFiles/FYP.dir/ChangeFormat.cpp.o
 FYP: CMakeFiles/FYP.dir/build.make
 FYP: CMakeFiles/FYP.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable FYP"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable FYP"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FYP.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

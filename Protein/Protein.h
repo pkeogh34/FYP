@@ -13,8 +13,8 @@
 
 class Protein {
 public:
-    Protein();
-    ~Protein();
+    Protein() = default;
+    ~Protein() = default;
 
     std::string getId() const;
     void setId(const std::string& newId);
@@ -30,6 +30,8 @@ public:
     std::unordered_map<char, int> aminoAcidFrequency() const;
 
     double percentageDisorder() const;
+
+    std::string oneHotEncode();
 
     void toString() const;
 

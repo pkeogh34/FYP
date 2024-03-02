@@ -5,8 +5,8 @@
 #include <fstream>
 #include <sstream>
 
-Protein parseJson(const std::string& protein) {
-    Protein data;
+std::unique_ptr<Protein> parseJson(const std::string& protein) {
+    auto data = std::make_unique<Protein>();
     std::stringstream ss(protein);
     std::string temp, key, value;
 
@@ -19,15 +19,15 @@ Protein parseJson(const std::string& protein) {
         value.erase(remove(value.begin(), value.end(), '{'), value.end());
         value.erase(remove(value.begin(), value.end(), ' '), value.end());
 
-        if (key.find("id") != std::string::npos) data.setId(value);
-        else if (key.find("sequence") != std::string::npos) data.setSequence(value);
-        else if (key.find("reference") != std::string::npos) data.setReference(value);
+        if (key.find("id") != std::string::npos) data->setId(value);
+        else if (key.find("sequence") != std::string::npos) data->setSequence(value);
+        else if (key.find("reference") != std::string::npos) data->setReference(value);
     }
     return data;
 }
 
-std::vector<Protein> parseJsonArray(const std::string& jsonString) {
-    std::vector<Protein> dataArray;
+std::vector<std::unique_ptr<Protein>> parseJsonArray(const std::string& jsonString) {
+    std::vector<std::unique_ptr<Protein>> dataArray;
     std::stringstream ss(jsonString);
     std::string token;
 

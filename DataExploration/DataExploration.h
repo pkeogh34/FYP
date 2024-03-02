@@ -8,10 +8,10 @@
 #include <vector>
 #include "../Protein/Protein.h"
 
-float avgProteinLength(const std::vector<Protein>& proteins);
-float avgDisorder(const std::vector<Protein>& proteins);
-Protein mostDisorderedProtein(const std::vector<Protein>& proteins);
-std::unordered_map<char, int> disorderFrequencyOfAminoAcids(const std::vector<Protein>& proteins);
-int totalNumAminoAcids(const std::vector<Protein>& proteins);
+float avgProteinLength(const std::vector<std::unique_ptr<Protein>>& proteins);
+float avgDisorder(const std::vector<std::unique_ptr<Protein>>& proteins);
+int mostDisorderedProtein(const std::vector<std::unique_ptr<Protein>>& proteins);
+std::unordered_map<char, int> disorderFrequencyOfAminoAcids(const std::vector<std::unique_ptr<Protein>>& proteins);
+int totalNumAminoAcids(const std::vector<std::unique_ptr<Protein>>& proteins);
 
 #endif //FYP_DATAEXPLORATION_H

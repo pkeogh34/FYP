@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/pack.dir/all
+all: CMakeFiles/model.dir/all
 all: CMakeFiles/FYP.dir/all
 .PHONY : all
 
@@ -72,35 +72,35 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/pack.dir/clean
+clean: CMakeFiles/model.dir/clean
 clean: CMakeFiles/FYP.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/pack.dir
+# Target rules for target CMakeFiles/model.dir
 
 # All Build rule for target.
-CMakeFiles/pack.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pack.dir/build.make CMakeFiles/pack.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pack.dir/build.make CMakeFiles/pack.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles --progress-num=6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32 "Built target pack"
-.PHONY : CMakeFiles/pack.dir/all
+CMakeFiles/model.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model.dir/build.make CMakeFiles/model.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model.dir/build.make CMakeFiles/model.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33 "Built target model"
+.PHONY : CMakeFiles/model.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/pack.dir/rule: cmake_check_build_system
+CMakeFiles/model.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles 27
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/pack.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/model.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/pack.dir/rule
+.PHONY : CMakeFiles/model.dir/rule
 
 # Convenience name for target.
-pack: CMakeFiles/pack.dir/rule
-.PHONY : pack
+model: CMakeFiles/model.dir/rule
+.PHONY : model
 
 # clean rule for target.
-CMakeFiles/pack.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pack.dir/build.make CMakeFiles/pack.dir/clean
-.PHONY : CMakeFiles/pack.dir/clean
+CMakeFiles/model.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/model.dir/build.make CMakeFiles/model.dir/clean
+.PHONY : CMakeFiles/model.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/FYP.dir
@@ -109,12 +109,12 @@ CMakeFiles/pack.dir/clean:
 CMakeFiles/FYP.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FYP.dir/build.make CMakeFiles/FYP.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FYP.dir/build.make CMakeFiles/FYP.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target FYP"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target FYP"
 .PHONY : CMakeFiles/FYP.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/FYP.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/FYP.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/FYP.dir/rule

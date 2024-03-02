@@ -135,7 +135,7 @@ load(int epoch, Model* M)
 {
   filebuf inbuf;
   char fname[1024];
-  sprintf(fname, "trained-%d.model", epoch);
+  snprintf(fname, sizeof(fname), "trained-%d.model", epoch);
   if (inbuf.open(fname, ios::in) != 0) {
     istream is(&inbuf);
     M->read(is);
@@ -360,10 +360,10 @@ main(int argc, char** argv)
   Options Opt(optstream);
   Opt.write();
 
-  Model* M;
+  Model *M = nullptr;
   if (Opt.readModel) {
     char tmp[1024];
-    sprintf(tmp, "trained-%d.model", Opt.readEpoch);
+    snprintf(tmp, sizeof(tmp), "trained-%d.model", Opt.readEpoch);
     cout << "Reading model from " << tmp << "\n";
     ifstream mstream(tmp);
     M = new Model(mstream);
@@ -371,12 +371,12 @@ main(int argc, char** argv)
     cout << "Creating model\n"<<flush;
 
     char tmp[1024];
-    sprintf(tmp, "previous.model");
+    snprintf(tmp, sizeof(tmp), "previous.model");
     cout << "Reading model from " << tmp << "\n";
     ifstream mstream(tmp);
 
 
-    M = new Model(mstream, Opt.NU, Opt.Classes, Opt.NLayers, Opt.NHo, Opt.NHt, Opt.Ht, Opt.NHi, Opt.Hi, Opt.gamma, Opt.context, Opt.Thresholds);
+    // M = new Model(mstream, Opt.NU, Opt.Classes, Opt.NLayers, Opt.NHo, Opt.NHt, Opt.Ht, Opt.NHi, Opt.Hi, Opt.gamma, Opt.context, Opt.Thresholds);
 
     cout << "Generating random parameters\n"<<flush;
     M->randomize_top(Opt.seed);

@@ -1,9 +1,8 @@
 
-#include <math.h>
+#include <cmath>
 #include <iostream>
-#include <fstream>
-#include <string.h>
-#include <stdlib.h>
+#include <cstring>
+#include <cstdlib>
 
 #include "Model.h"
 #include "Sequence.h"
@@ -82,7 +81,7 @@ public:
       cout << "threshold " << threshold << "\n";
       cout << "cycles " << cycles << "\n";
     };
-  Options(istream& is)
+  explicit Options(istream& is)
     {
       int i;
       char str[1024];
@@ -133,13 +132,12 @@ load(int epoch, Model* M)
 {
   filebuf inbuf;
   char fname[1024];
-  sprintf(fname, "trained-%d.model", epoch);
-  if (inbuf.open(fname, ios::in) != 0) {
+  snprintf(fname, sizeof(fname), "trained-%d.model", epoch);
+  if (inbuf.open(fname, ios::in) != nullptr) {
     istream is(&inbuf);
     M->read(is);
   } else {
     cout << "Failed to read file " << fname;
-    exit;
   }
   inbuf.close();
 }
@@ -149,13 +147,12 @@ save(int epoch, Model* M)
 {
   filebuf outbuf;
   char fname[1024];
-  sprintf(fname, "trained-%d.model", epoch);
-  if (outbuf.open(fname, ios::out) != 0) {
+    snprintf(fname, sizeof(fname), "trained-%d.model", epoch);
+  if (outbuf.open(fname, ios::out) != nullptr) {
     ostream os(&outbuf);
     M->write(os);
   } else {
     cout << "Failed to write to file " << fname;
-    exit;
   }
   outbuf.close();
 }
@@ -188,8 +185,8 @@ save_map(int epoch, Model* M)
   filebuf outbuf;
   int i,j;
   char fname[1024];
-  sprintf(fname, "trained-%d.map", epoch);
-  if (outbuf.open(fname, ios::out) != 0) {
+  snprintf(fname, sizeof(fname), "trained-%d.map", epoch);
+  if (outbuf.open(fname, ios::out) != nullptr) {
     ostream os(&outbuf);
     for (i=0;i<101;i++) {
 		for (j=0;j<101;j++) {
@@ -200,14 +197,13 @@ save_map(int epoch, Model* M)
 
   } else {
     cout << "Failed to read file " << fname;
-    exit;
   }
   outbuf.close();
 }
 
 
 void
-evaluate(Model* M, DataSet& D, char* which, int cycles)
+evaluate(Model* M, DataSet& D, const char *which, int cycles)
 {
 	int y;
 
@@ -219,7 +215,7 @@ if (strncmp(which,"test",4)==0)
     M->predict(D.seq[p], cycles);
 else
     M->predict(D.seq[p], cycles);
-    if (p%200==0) cout << "." << flush;
+if (p%200==0) cout << "." << flush;
   }
 
 double a[128];
@@ -357,8 +353,8 @@ train(Model* M, DataSet& D, DataSet& T, Options& Opt)
 		  	for (cy=1;cy<=Opt.cycles;cy++) {
 				evaluate(M, D, "train", cy);
 				evaluate(M, T, "test", cy);
-				D.write("train-predictions");
-				T.write("test-predictions");
+				D.write((ostream &) "train-predictions");
+				T.write((ostream &) "test-predictions");
 			}
     }
     cout << "\n"<<flush;
@@ -381,7 +377,7 @@ main(int argc, char** argv)
   Model* M;
   if (Opt.readModel) {
     char tmp[1024];
-    sprintf(tmp, "trained-%d.model", Opt.readEpoch);
+    snprintf(tmp, sizeof(tmp), "trained-%d.model", Opt.readEpoch);
     cout << "Reading model from " << tmp << "\n";
     ifstream mstream(tmp);
     M = new Model(mstream);

@@ -4,11 +4,11 @@
 #define Sequence_h 1
 
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include <iostream>
 #include <fstream>
-#include <string.h>
-#include <stdlib.h>
+#include <cstring>
+#include <cstdlib>
 
 #define MAX_T 20000 //Formerly 8196
 
@@ -133,7 +133,7 @@ void write_probs(ostream& os) {
 		  if (y_pred[t]==-1) os << "0.0000\t";
 		  else {
 			  char num[16];
-			  sprintf(num, "%.4f", y_pred_probs[classes*t+i]);
+              snprintf(num, sizeof(num), "%.4f", y_pred_probs[classes*t+i]);
 			  os << num<<"\t";
 		  }
 	  }
@@ -144,7 +144,7 @@ void write_probs(ostream& os) {
 };
 
 
-void write_predictions(ostream& os) {
+void write_predictions(ostream& os) const {
   int i,t;
 
   for (i=0;i<length*attributes;i++) {
@@ -162,7 +162,7 @@ void write_predictions(ostream& os) {
 		  if (y_pred[t]==-1) os << "0.0000\t";
 		  else {
 			  char num[16];
-			  sprintf(num, "%.4f", y_pred_probs[classes*t+i]);
+			  snprintf(num, sizeof(num), "%.4f", y_pred_probs[classes*t+i]);
 			  os << num<<"\t";
 		  }
 	  }
@@ -202,15 +202,15 @@ public:
   int attributes;
   int classes;
 
-  DataSet() {};
+  DataSet() = default;;
 
-  DataSet(int the_length) {
+  explicit DataSet(int the_length) {
 	totSize=0;
 	length=the_length;
 	seq = new Sequence*[length];
   }
 
-  DataSet(istream& is, int quot=0)
+  explicit DataSet(istream& is, int quot=0)
     {
 	  totSize=0;
       is >> length;
@@ -225,17 +225,17 @@ public:
       }
     };
 
-  void write(ostream& os)
+  void write(ostream& os) const
     {
       os << length << "\n";
       for (int p=0; p<length; p++) {
 	seq[p]->write(os);
       }
     };
-  void write(char* fname)
+  void write(char* fname) const
     {
       filebuf outbuf;
-      if (outbuf.open(fname, ios::out) != 0) {
+      if (outbuf.open(fname, ios::out) != nullptr) {
 	ostream os(&outbuf);
 	this->write(os);
       } else {
@@ -245,17 +245,17 @@ public:
     };
 
 
-  void write_probs(ostream& os)
+  void write_probs(ostream& os) const
     {
       os << length << "\n";
       for (int p=0; p<length; p++) {
 		seq[p]->write_probs(os);
       }
     };
-  void write_probs(char* fname)
+  void write_probs(char* fname) const
     {
       filebuf outbuf;
-      if (outbuf.open(fname, ios::out) != 0) {
+      if (outbuf.open(fname, ios::out) != nullptr) {
 		ostream os(&outbuf);
 		this->write_probs(os);
       } else {
@@ -265,17 +265,17 @@ public:
     };
 
 
-  void write_predictions(ostream& os)
+  void write_predictions(ostream& os) const
     {
       os << length << "\n";
       for (int p=0; p<length; p++) {
 		seq[p]->write_predictions(os);
       }
     };
-  void write_predictions(char* fname)
+  void write_predictions(char* fname) const
     {
       filebuf outbuf;
-      if (outbuf.open(fname, ios::out) != 0) {
+      if (outbuf.open(fname, ios::out) != nullptr) {
 		ostream os(&outbuf);
 		this->write_predictions(os);
       } else {

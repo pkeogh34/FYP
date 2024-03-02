@@ -17,8 +17,8 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="pack">
-				<Option output="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/pack" prefix_auto="0" extension_auto="0"/>
+			<Target title="model">
+				<Option output="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/model" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -34,14 +34,14 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 pack"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 model"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="pack/fast">
-				<Option output="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/pack" prefix_auto="0" extension_auto="0"/>
+			<Target title="model/fast">
+				<Option output="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/model" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -57,7 +57,7 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 pack/fast"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 model/fast"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -131,151 +131,157 @@
 			</Target>
 		</Build>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/BRNN.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/BRNN.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Layer.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Layer.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Model.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Model.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/NN.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/NN.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/NNt.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/NNt.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Sequence.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/Train.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/BRNN.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/BRNN.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/BRNNr.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/BRNNr.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Layer.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Layer.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/MModel.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/MModel.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Model.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Model.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NN.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NN.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NNr.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NNr.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NNt.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/NNt.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Predict.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Predict_thresholds.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Sequence.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/BRNN_parallel3.1/testing_BRNN/Train.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/ChangeFormat.cpp">
+			<Option target="FYP"/>
+		</Unit>
+		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/ChangeFormat.h">
+			<Option target="FYP"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/DNN1.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/DNN1.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Layer.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Layer.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Model.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Model.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NN.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NN.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NN1.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NN1.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NNt.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NNt.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NNt1.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/NNt1.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Sequence.h">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Train.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DNN_n-to-n_1layer/Train_inc.cxx">
-			<Option target="pack"/>
+			<Option target="model"/>
 		</Unit>
 		<Unit filename="/Users/patrickkeogh/CLionProjects/FYP/DataExploration/DataExploration.cpp">
 			<Option target="FYP"/>

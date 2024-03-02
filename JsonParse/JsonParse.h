@@ -9,8 +9,8 @@
 #include <vector>
 #include "../Protein/Protein.h"
 
-Protein parseJson(const std::string& protein);
-std::vector<Protein> parseJsonArray(const std::string& jsonString);
+std::unique_ptr<Protein> parseJson(const std::string& protein);
+std::vector<std::unique_ptr<Protein>> parseJsonArray(const std::string& jsonString);
 std::string readFileIntoString(const std::string& path);
 
 #endif // JSONPARSE_H

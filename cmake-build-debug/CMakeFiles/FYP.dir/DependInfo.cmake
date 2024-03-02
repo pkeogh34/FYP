@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/patrickkeogh/CLionProjects/FYP/ChangeFormat.cpp" "CMakeFiles/FYP.dir/ChangeFormat.cpp.o" "gcc" "CMakeFiles/FYP.dir/ChangeFormat.cpp.o.d"
   "/Users/patrickkeogh/CLionProjects/FYP/DataExploration/DataExploration.cpp" "CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o" "gcc" "CMakeFiles/FYP.dir/DataExploration/DataExploration.cpp.o.d"
   "/Users/patrickkeogh/CLionProjects/FYP/JsonParse/JsonParse.cpp" "CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o" "gcc" "CMakeFiles/FYP.dir/JsonParse/JsonParse.cpp.o.d"
   "/Users/patrickkeogh/CLionProjects/FYP/Protein/Protein.cpp" "CMakeFiles/FYP.dir/Protein/Protein.cpp.o" "gcc" "CMakeFiles/FYP.dir/Protein/Protein.cpp.o.d"

@@ -1,13 +1,26 @@
 cmake_minimum_required(VERSION 3.23)
 project(FYP)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_C_COMPILER "/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang")
+set(CMAKE_CXX_COMPILER "/opt/homebrew/Cellar/llvm/17.0.6_1/bin/clang++")
+
+set(OpenMP_C "${CMAKE_C_COMPILER}")
+set(OpenMP_C_FLAGS "-Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include")
+set(OpenMP_C_LIB_NAMES "libomp" "libgomp" "libiomp5")
+set(OpenMP_CXX "${CMAKE_CXX_COMPILER}")
+set(OpenMP_CXX_FLAGS "-Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include")
+set(OpenMP_CXX_LIB_NAMES "libomp" "libgomp" "libiomp5")
+set(OpenMP_libomp_LIBRARY "/opt/homebrew/opt/llvm/lib/libomp.dylib")
+set(OpenMP_libgomp_LIBRARY "/opt/homebrew/opt/llvm/lib/libgomp.dylib")
+set(OpenMP_libiomp5_LIBRARY "/opt/homebrew/opt/llvm/lib/libiomp5.dylib")
+
+find_package(OpenMP REQUIRED)
 
 include_directories(BRNN_parallel3.1)
 include_directories(BRNN_parallel3.1/testing_BRNN)
 include_directories(DNN_n-to-n_1layer)
 
-add_executable(pack
+add_executable(model
         BRNN_parallel3.1/testing_BRNN/BRNN.cxx
         BRNN_parallel3.1/testing_BRNN/BRNN.h
         BRNN_parallel3.1/testing_BRNN/BRNNr.cxx
@@ -56,6 +69,19 @@ add_executable(pack
         DNN_n-to-n_1layer/NNt1.h
         DNN_n-to-n_1layer/Sequence.h
         DNN_n-to-n_1layer/Train.cxx
-        DNN_n-to-n_1layer/Train_inc.cxx)
+        DNN_n-to-n_1layer/Train_inc.cxx
+        )
 
-add_executable(FYP main.cpp JsonParse/JsonParse.h JsonParse/JsonParse.cpp DataExploration/DataExploration.h DataExploration/DataExploration.cpp Protein/Protein.cpp Protein/Protein.h)
+add_executable(FYP main.cpp
+        JsonParse/JsonParse.h
+        JsonParse/JsonParse.cpp
+        DataExploration/DataExploration.h
+        DataExploration/DataExploration.cpp
+        Protein/Protein.cpp
+        Protein/Protein.h
+        ChangeFormat.cpp
+        ChangeFormat.h)
+
+if(OpenMP_CXX_FOUND OR OpenMP_C_FOUND)
+    target_link_libraries(model PUBLIC OpenMP::OpenMP_CXX OpenMP::OpenMP_C)
+endif()
