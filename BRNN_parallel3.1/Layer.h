@@ -1,13 +1,10 @@
 
 #ifndef Layer_h
 #define Layer_h 1
-#include <math.h>
 #include <iostream>
+#include <math.h>
 #include <string.h>
 using namespace std;
-
-
-
 
 // Layer ver 3.03
 // 12/12/2003
@@ -35,431 +32,397 @@ using namespace std;
 // In version 3.03:
 // -gradient fixed for softmax: (y-t)x, no f1
 
-
 class Layer
 {
 public:
-int NY;
-int NU;
-int NUr;
-int* NK;
+	int NY;
+	int NU;
+	int NUr;
+	int *NK;
 
-double* Y;
-double* A;
-double* U;	 //NU*NK
-double* delta;    //NY
-double* backprop; //NU*NK
+	double *Y;
+	double *A;
+	double *U;		  // NU*NK
+	double *delta;	  // NY
+	double *backprop; // NU*NK
 
-double* W;
-double* dW;
-double* d2W;
+	double *W;
+	double *dW;
+	double *d2W;
 
-double* B;        //NY
-double* dB;       //NY
-double* d2B;       //NY
+	double *B;	 // NY
+	double *dB;	 // NY
+	double *d2B; // NY
 
-int output; 	//0=no,1=yes
-int ninput;		//0=input layer,1=just real side backprop,2=full backprop
+	int output; // 0=no,1=yes
+	int ninput; // 0=input layer,1=just real side backprop,2=full backprop
 
-int NUtot,NUplain;
+	int NUtot, NUplain;
 
+	void alloc(int NY, int NU, int *NK);
 
-void alloc(int NY, int NU, int* NK);
+	// public:
 
+	void softmax();
+	void squash();
 
-//public:
+	Layer(Layer *from)
+	{
+		int y;
+		NY = from->NY;
+		NU = from->NU;
+		NUr = from->NUr;
 
-void softmax();
-void squash();
+		NK = new int[NU + NUr];
+		for (int i = 0; i < NU; i++)
+			NK[i] = from->NK[i];
+		for (int i = NU; i < NU + NUr; i++)
+			NK[i] = 1;
+		alloc(NY, NU + NUr, NK);
+		ninput = from->ninput;
+		output = from->output;
 
-Layer(Layer* from) {
-int y;
-	NY = from->NY;
-	NU = from->NU;
-	NUr = from->NUr;
+		NUplain = 0;
+		for (int u = 0; u < NU; u++)
+		{
+			NUplain += NK[u];
+		}
 
-NK=new int[NU+NUr];
-for (int i=0; i<NU; i++)
-	NK[i]=from->NK[i];
-for (int i=NU; i<NU+NUr; i++)
-        NK[i]=1;
-alloc(NY,NU+NUr,NK);
-ninput = from->ninput;
-output = from->output;
+		for (y = 0; y < NY; y++)
+		{
+			B[y] = from->B[y];
+			dB[y] = 0;
+			d2B[y] = 0;
+			for (int u = 0; u < NUtot; u++)
+			{
+				W[y * NUtot + u] = from->W[y * NUtot + u];
+				dW[y * NUtot + u] = 0;
+				d2W[y * NUtot + u] = 0;
+			}
+		}
+	}
 
-NUplain =0;
-for (int u=0; u<NU; u++) {
-  NUplain += NK[u];
-}
+	void copy_dW(Layer *from)
+	{
+		for (int y = 0; y < NY; y++)
+		{
+			dB[y] += from->dB[y];
+			//		cout << from->dB[y] << " ";
+			for (int u = 0; u < NUtot; u++)
+			{
+				dW[y * NUtot + u] += from->dW[y * NUtot + u];
+			}
+		}
+	}
 
-for (y=0; y<NY; y++) {
-	B[y] = from->B[y];
-	dB[y] = 0;
-	d2B[y] = 0;
-        for (int u=0; u<NUtot; u++) {
-			W[y*NUtot+u] = from->W[y*NUtot+u];
-			dW[y*NUtot+u] = 0;
-			d2W[y*NUtot+u] = 0;
-                }
-        }
+	void dump_dW(ostream &os)
+	{
+		for (int y = 0; y < NY; y++)
+		{
+			os << dB[y] << " ";
+			for (int u = 0; u < NUtot; u++)
+			{
+				os << dW[y * NUtot + u] << " ";
+			}
+			os << "\n";
+		}
+	}
+	void dump_W(ostream &os)
+	{
+		for (int y = 0; y < NY; y++)
+		{
+			os << B[y] << " ";
+			for (int u = 0; u < NUtot; u++)
+			{
+				os << W[y * NUtot + u] << " ";
+			}
+			os << "\n";
+		}
+	}
 
-}
+	~Layer()
+	{
+		delete[] NK;
+		delete[] Y;
+		delete[] A;
+		delete[] U;
 
+		delete[] delta;
+		delete[] backprop;
 
+		delete[] B;
+		delete[] dB;
+		delete[] d2B;
+		delete[] W;
+		delete[] dW;
+		delete[] d2W;
+	}
 
+	// Constructor
+	// Categorical inputs
 
+	Layer(int t_NY, int *t_NK, int t_NU) : NY(t_NY), NU(t_NU)
+	{
+		NK = new int[NU];
+		for (int i = 0; i < NU; i++)
+			NK[i] = t_NK[i];
+		alloc(NY, NU, NK);
+		ninput = 0;
+		output = 0;
 
-void copy_dW(Layer* from) {
-	for (int y=0; y<NY; y++) {
-		dB[y] += from->dB[y];
-//		cout << from->dB[y] << " ";
-        	for (int u=0; u<NUtot; u++) {
-				dW[y*NUtot+u] += from->dW[y*NUtot+u];
-                }
-        }
-	
-}
+		NUplain = 0;
+		for (int u = 0; u < NU; u++)
+		{
+			NUplain += NK[u];
+		}
+		NUr = 0;
+	}
 
-void dump_dW(ostream& os) {
-	for (int y=0; y<NY; y++) {
-		os << dB[y] << " ";
-        	for (int u=0; u<NUtot; u++) {
-				os << dW[y*NUtot+u] << " ";
-                }
-		os << "\n";
-        }
-}
-void dump_W(ostream& os) {
-	for (int y=0; y<NY; y++) {
-		os << B[y] << " ";
-        	for (int u=0; u<NUtot; u++) {
-				os << W[y*NUtot+u] << " ";
-                }
-		os << "\n";
-        }
-}
+	// Constructor
+	// Real-valued inputs
 
+	Layer(int t_NY, int t_NU) : NY(t_NY), NU(t_NU)
+	{
+		NK = new int[NU];
+		for (int i = 0; i < NU; i++)
+			NK[i] = 1;
+		NUr = 0;
+		alloc(NY, NU, NK);
+		ninput = 0;
+		output = 0;
 
-~Layer() {
-delete[] NK;
-delete[] Y;
-delete[] A;
-delete[] U;
+		NUplain = 0;
+		for (int u = 0; u < NU; u++)
+		{
+			NUplain += NK[u];
+		}
+		// cout << NUplain << " " << NUtot << "a " << flush;
+	}
 
-delete[] delta;
-delete[] backprop;
+	// Constructor
+	// Mixed inputs (NU categorical attributes, NUr real-valued)
 
-delete[] B;
-delete[] dB;
-delete[] d2B;
-delete[] W;
-delete[] dW;
-delete[] d2W;
-}
+	Layer(int t_NY, int *t_NK, int t_NU, int t_NUr) : NY(t_NY), NU(t_NU), NUr(t_NUr)
+	{
+		int i;
+		NK = new int[NU + NUr];
+		for (i = 0; i < NU; i++)
+			NK[i] = t_NK[i];
+		for (i = NU; i < NU + NUr; i++)
+			NK[i] = 1;
+		alloc(NY, NU + NUr, NK);
+		ninput = 0;
+		output = 0;
 
+		NUplain = 0;
+		for (int u = 0; u < NU; u++)
+		{
+			NUplain += NK[u];
+		}
+		// cout << NY << " " << flush;
+		// cout << NUplain << " " << NUtot << "b " << flush;
+	}
 
+	Layer(istream &is);
 
-// Constructor
-// Categorical inputs
+	void set_ninput(int vi)
+	{
+		ninput = vi;
+	};
 
-Layer(int t_NY, int* t_NK, int t_NU) :
-	NY(t_NY), NU(t_NU)
-{
-NK=new int[NU];
-for (int i=0; i<NU; i++)
-	NK[i]=t_NK[i];
-alloc(NY,NU,NK);
-ninput=0;
-output=0;
+	void set_output(int vo)
+	{
+		output = vo;
+	};
 
-NUplain =0;
-for (int u=0; u<NU; u++) {
-  NUplain += NK[u];
-}
-NUr=0;
-}
+	void read(istream &is);
+	void write(ostream &os);
 
-// Constructor
-// Real-valued inputs
+	virtual void forward(int *I);
+	virtual void forward(double *I);
+	virtual void forward(int *I1, double *I2);
+	virtual void forward(double *I1, double *I2);
+	// virtual void forward(double* I, int nz_n, int* nz);
 
-Layer(int t_NY, int t_NU) :
-	NY(t_NY), NU(t_NU)
-{
-NK=new int[NU];
-for (int i=0; i<NU; i++)
-	NK[i]=1;
-NUr=0;
-alloc(NY,NU,NK);
-ninput=0;
-output=0;
+	virtual double f1(int y);
+	virtual double f_cost(double *t);
+	double log_cost(double *t);
+	double sq_cost(double *t);
 
-NUplain =0;
-for (int u=0; u<NU; u++) {
-  NUplain += NK[u];
-}
-//cout << NUplain << " " << NUtot << "a " << flush;
-}
+	virtual double backward(double *t, double weight = 1.0);
 
-// Constructor
-// Mixed inputs (NU categorical attributes, NUr real-valued)
+	void gradient(int *I);
+	void gradient(double *I);
+	void gradient(int *I1, double *I2);
+	void gradient(double *I1, double *I2);
+	// void gradient(double* I, int nz_n,int*nz);
+	void gradient();
 
-Layer(int t_NY, int* t_NK, int t_NU, int t_NUr) :
-	NY(t_NY), NU(t_NU), NUr(t_NUr)
-{
-int i;
-NK=new int[NU+NUr];
-for (i=0; i<NU; i++)
-	NK[i]=t_NK[i];
-for (i=NU; i<NU+NUr; i++)
-	NK[i]=1;
-alloc(NY,NU+NUr,NK);
-ninput=0;
-output=0;
+	virtual void updateWeights(double epsilon);
+	virtual void updateWeightsL1(double epsilon);
+	virtual void updateWeightsClipped(double epsilon);
+	void resetGradient();
+	virtual void initWeights(int seed);
 
+	inline double *back_out() { return backprop; }
+	inline double *Aout() { return A; }
+	inline double *out() { return Y; }
 
-NUplain =0;
-for (int u=0; u<NU; u++) {
-  NUplain += NK[u];
-}
-//cout << NY << " " << flush;
-//cout << NUplain << " " << NUtot << "b " << flush;
-}
+	inline int get_NY() { return NY; }
+	inline int get_NU() { return NU; }
+	inline int *get_NK() { return NK; }
 
-Layer(istream& is);
+	inline double *get_dW() { return dW; }
 
+	double dlength();
 
-
-void set_ninput(int vi) {
-  ninput=vi;
+	void set_dW(double *newdW);
 };
-
-void set_output(int vo) {
-  output=vo;
-};
-
-
-void read(istream& is);
-void write(ostream& os);
-
-virtual void forward(int* I);
-virtual void forward(double* I);
-virtual void forward(int* I1, double* I2);
-virtual void forward(double* I1, double* I2);
-//virtual void forward(double* I, int nz_n, int* nz);
-
-virtual double f1(int y);
-virtual double f_cost(double* t);
-double log_cost(double* t);
-double sq_cost(double* t);
-
-virtual double backward(double* t, double weight=1.0);
-
-void gradient(int* I);
-void gradient(double* I);
-void gradient(int* I1, double* I2);
-void gradient(double* I1, double* I2);
-//void gradient(double* I, int nz_n,int*nz);
-void gradient();
-
-
-virtual void updateWeights(double epsilon);
-virtual void updateWeightsL1(double epsilon);
-virtual void updateWeightsClipped(double epsilon);
-void resetGradient();
-virtual void initWeights(int seed);
-
-inline double* back_out() { return backprop; }
-inline double* Aout() { return A; }
-inline double* out() { return Y; }
-
-
-inline int get_NY() { return NY; }
-inline int get_NU() { return NU; }
-inline int* get_NK() { return NK; }
-
-inline double* get_dW() { return dW; }
-
-double dlength();
-
-void set_dW(double* newdW);
-
-
-};
-
 
 class Layer_tanh : public Layer
 {
 
 public:
+	Layer_tanh(int t_NY, int *t_NK, int t_NU) : Layer(t_NY, t_NK, t_NU)
+	{
+	}
 
+	Layer_tanh(int t_NY, int t_NU) : Layer(t_NY, t_NU)
+	{
+	}
 
-Layer_tanh(int t_NY, int* t_NK, int t_NU) :
-Layer(t_NY, t_NK, t_NU)
-{
-}
+	Layer_tanh(int t_NY, int *t_NK, int t_NU, int t_NUr) : Layer(t_NY, t_NK, t_NU, t_NUr)
+	{
+	}
 
-Layer_tanh(int t_NY, int t_NU) :
-Layer(t_NY, t_NU)
-{
-}
+	Layer_tanh(istream &is) : Layer(is)
+	{
+	}
 
-Layer_tanh(int t_NY, int* t_NK, int t_NU, int t_NUr) :
-Layer(t_NY, t_NK, t_NU, t_NUr)
-{
-}
+	Layer_tanh(Layer *from) : Layer(from)
+	{
+	}
 
-Layer_tanh(istream& is) :
-Layer(is)
-{
-}
+	void forward(int *I)
+	{
+		Layer::forward(I);
+		squash();
+	}
 
-Layer_tanh(Layer*from) :
-Layer(from)
-{
-}
+	void forward(double *I)
+	{
+		Layer::forward(I);
+		squash();
+	}
 
+	void forward(int *I1, double *I2)
+	{
+		Layer::forward(I1, I2);
+		squash();
+	}
 
+	void forward(double *I1, double *I2)
+	{
+		Layer::forward(I1, I2);
+		squash();
+	}
 
+	// void forward(double* I,int nz_n,int*nz)
+	//{
+	// Layer::forward(I,nz_n,nz);
+	// squash();
+	// }
 
-void forward(int* I)
-{
-Layer::forward(I);
-squash();
-}
+	double backward(double *t, double weight = 1.0)
+	{
+		return Layer::backward(t, weight);
+	}
 
-void forward(double* I)
-{
-Layer::forward(I);
-squash();
-}
+	double f1(int y);
 
-void forward(int* I1,double* I2)
-{
-Layer::forward(I1,I2);
-squash();
-}
+	double f_cost(double *t);
 
-void forward(double* I1,double* I2)
-{
-Layer::forward(I1,I2);
-squash();
-}
+	void initWeights(int seed)
+	{
+		Layer::initWeights(seed);
+	}
 
-//void forward(double* I,int nz_n,int*nz)
-//{
-//Layer::forward(I,nz_n,nz);
-//squash();
-//}
-
-double backward(double* t, double weight=1.0)
-{
-return Layer::backward(t,weight);
-}
-
-
-
-double f1(int y);
-
-double f_cost(double* t);
-
-
-void initWeights(int seed)
-{
-Layer::initWeights(seed);
-}
-
-void updateWeights(double epsilon)
-{
-Layer::updateWeights(epsilon);
-}
-
+	void updateWeights(double epsilon)
+	{
+		Layer::updateWeights(epsilon);
+	}
 };
-
-
 
 class Layer_soft : public Layer
 {
 
-public :
+public:
+	Layer_soft(int t_NY, int *t_NK, int t_NU) : Layer(t_NY, t_NK, t_NU)
+	{
+	}
 
-Layer_soft(int t_NY, int* t_NK, int t_NU) :
-Layer(t_NY, t_NK, t_NU)
-{
-}
+	Layer_soft(int t_NY, int t_NU) : Layer(t_NY, t_NU)
+	{
+	}
 
-Layer_soft(int t_NY, int t_NU) :
-Layer(t_NY, t_NU)
-{
-}
+	Layer_soft(int t_NY, int *t_NK, int t_NU, int t_NUr) : Layer(t_NY, t_NK, t_NU, t_NUr)
+	{
+	}
 
-Layer_soft(int t_NY, int* t_NK, int t_NU, int t_NUr) :
-Layer(t_NY, t_NK, t_NU, t_NUr)
-{
-}
+	Layer_soft(istream &is) : Layer(is)
+	{
+	}
 
-Layer_soft(istream& is) :
-Layer(is)
-{
-}
+	Layer_soft(Layer *from) : Layer(from)
+	{
+	}
 
+	void forward(int *I)
+	{
+		Layer::forward(I);
+		softmax();
+	}
 
-Layer_soft(Layer*from) :
-Layer(from)
-{
-}
+	void forward(double *I)
+	{
+		Layer::forward(I);
+		softmax();
+	}
 
+	void forward(int *I1, double *I2)
+	{
+		Layer::forward(I1, I2);
+		softmax();
+	}
 
+	void forward(double *I1, double *I2)
+	{
+		Layer::forward(I1, I2);
+		softmax();
+	}
 
-void forward(int* I)
-{
-Layer::forward(I);
-softmax();
-}
+	// void forward(double* I,int nz_n,int*nz)
+	//{
+	// Layer::forward(I,nz_n,nz);
+	// softmax();
+	// }
 
-void forward(double* I)
-{
-Layer::forward(I);
-softmax();
-}
+	double backward(double *t, double weight = 1.0);
 
-void forward(int* I1,double* I2)
-{
-Layer::forward(I1,I2);
-softmax();
-}
+	double f1(int y);
 
-void forward(double* I1,double* I2)
-{
-Layer::forward(I1,I2);
-softmax();
-}
+	double f_cost(double *t);
 
-//void forward(double* I,int nz_n,int*nz)
-//{
-//Layer::forward(I,nz_n,nz);
-//softmax();
-//}
+	void initWeights(int seed)
+	{
+		Layer::initWeights(seed);
+	}
 
-double backward(double* t, double weight=1.0);
-
-double f1(int y);
-
-double f_cost(double* t);
-
-void initWeights(int seed)
-{
-Layer::initWeights(seed);
-}
-
-void updateWeights(double epsilon)
-{
-Layer::updateWeights(epsilon);
-}
-
+	void updateWeights(double epsilon)
+	{
+		Layer::updateWeights(epsilon);
+	}
 };
-
-
-
 
 /*
 

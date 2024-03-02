@@ -2,9 +2,9 @@
 #ifndef DRNN1_h
 #define DRNN1_h 1
 
-#include <stdlib.h>
+#include <cstdlib>
 #include <fstream>
-#include <math.h>
+#include <cmath>
 #include "NN1.h"
 #include "NNt.h"
 #include "NNt1.h"

@@ -1,19 +1,17 @@
 //
 // Created by Patrick Ross Keogh on 01/03/2024.
 //
-#include <unordered_map>
-#include <string>
+#include "DataExploration/DataExploration.h"
+#include "Protein/Protein.h"
 #include <fstream>
 #include <iostream>
-#include "Protein/Protein.h"
-#include "DataExploration/DataExploration.h"
+#include <string>
+#include <unordered_map>
 
 #ifndef FYP_CHANGEFORMAT_H
 #define FYP_CHANGEFORMAT_H
 
-std::string oneHotEncode(Protein& protein);
-void outputModifiedProtein(std::vector<std::unique_ptr<Protein>>& proteins);
-std::string decodeSequence(const std::string& encodedSequence);
+void outputModifiedProteins(std::vector<std::unique_ptr<Protein>> &proteins);
+std::string decodeSequence(const std::string &encodedSequence);
 
-
-#endif //FYP_CHANGEFORMAT_H
+#endif // FYP_CHANGEFORMAT_H

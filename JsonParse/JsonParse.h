@@ -4,14 +4,13 @@
 #ifndef JSONPARSE_H
 #define JSONPARSE_H
 
+#include "../Protein/Protein.h"
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../Protein/Protein.h"
 
-std::unique_ptr<Protein> parseJson(const std::string& protein);
-std::vector<std::unique_ptr<Protein>> parseJsonArray(const std::string& jsonString);
-std::string readFileIntoString(const std::string& path);
+std::unique_ptr<Protein> parseJson(const std::string &protein);
+std::vector<std::unique_ptr<Protein>> parseJsonArray(const std::string &jsonString);
+std::string readFileIntoString(const std::string &path);
 
 #endif // JSONPARSE_H
-

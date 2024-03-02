@@ -23,150 +23,315 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 Detecting C OpenMP version failed with the following output:
 Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_8fd64/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_8fd64.dir/build.make CMakeFiles/cmTC_8fd64.dir/build
-Building C object CMakeFiles/cmTC_8fd64.dir/OpenMPCheckVersion.c.o
-/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_8fd64.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_8fd64.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_8fd64.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_8d72a/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_8d72a.dir/build.make CMakeFiles/cmTC_8d72a.dir/build
+Building C object CMakeFiles/cmTC_8d72a.dir/OpenMPCheckVersion.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_8d72a.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_8d72a.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_8d72a.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
 /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c:3:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
-make[1]: *** [CMakeFiles/cmTC_8fd64.dir/OpenMPCheckVersion.c.o] Error 1
-make: *** [cmTC_8fd64/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_8d72a.dir/OpenMPCheckVersion.c.o] Error 1
+make: *** [cmTC_8d72a/fast] Error 2
 
 
 
 Detecting CXX OpenMP version failed with the following output:
 Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_2c758/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_2c758.dir/build.make CMakeFiles/cmTC_2c758.dir/build
-Building CXX object CMakeFiles/cmTC_2c758.dir/OpenMPCheckVersion.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_2c758.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_2c758.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_2c758.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_050be/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_050be.dir/build.make CMakeFiles/cmTC_050be.dir/build
+Building CXX object CMakeFiles/cmTC_050be.dir/OpenMPCheckVersion.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_050be.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_050be.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_050be.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
 /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp:3:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
-make[1]: *** [CMakeFiles/cmTC_2c758.dir/OpenMPCheckVersion.cpp.o] Error 1
-make: *** [cmTC_2c758/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_050be.dir/OpenMPCheckVersion.cpp.o] Error 1
+make: *** [cmTC_050be/fast] Error 2
 
 
 
 Detecting C OpenMP version failed with the following output:
 Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_ab78d/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_ab78d.dir/build.make CMakeFiles/cmTC_ab78d.dir/build
-Building C object CMakeFiles/cmTC_ab78d.dir/OpenMPCheckVersion.c.o
-/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_ab78d.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_ab78d.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_ab78d.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ab6ee/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_ab6ee.dir/build.make CMakeFiles/cmTC_ab6ee.dir/build
+Building C object CMakeFiles/cmTC_ab6ee.dir/OpenMPCheckVersion.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_ab6ee.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_ab6ee.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_ab6ee.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
 /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c:3:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
-make[2]: *** [CMakeFiles/cmTC_ab78d.dir/OpenMPCheckVersion.c.o] Error 1
-make[1]: *** [cmTC_ab78d/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_ab6ee.dir/OpenMPCheckVersion.c.o] Error 1
+make: *** [cmTC_ab6ee/fast] Error 2
 
 
 
 Detecting CXX OpenMP version failed with the following output:
 Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_a4c49/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_a4c49.dir/build.make CMakeFiles/cmTC_a4c49.dir/build
-Building CXX object CMakeFiles/cmTC_a4c49.dir/OpenMPCheckVersion.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_a4c49.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_a4c49.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_a4c49.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_65c0b/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_65c0b.dir/build.make CMakeFiles/cmTC_65c0b.dir/build
+Building CXX object CMakeFiles/cmTC_65c0b.dir/OpenMPCheckVersion.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_65c0b.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_65c0b.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_65c0b.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
 /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp:3:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
-make[2]: *** [CMakeFiles/cmTC_a4c49.dir/OpenMPCheckVersion.cpp.o] Error 1
-make[1]: *** [cmTC_a4c49/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_65c0b.dir/OpenMPCheckVersion.cpp.o] Error 1
+make: *** [cmTC_65c0b/fast] Error 2
 
 
 
 Detecting C OpenMP version failed with the following output:
 Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_a931c/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_a931c.dir/build.make CMakeFiles/cmTC_a931c.dir/build
-Building C object CMakeFiles/cmTC_a931c.dir/OpenMPCheckVersion.c.o
-/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_a931c.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_a931c.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_a931c.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_e7790/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_e7790.dir/build.make CMakeFiles/cmTC_e7790.dir/build
+Building C object CMakeFiles/cmTC_e7790.dir/OpenMPCheckVersion.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_e7790.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_e7790.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_e7790.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
 /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c:3:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
-make[1]: *** [CMakeFiles/cmTC_a931c.dir/OpenMPCheckVersion.c.o] Error 1
-make: *** [cmTC_a931c/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_e7790.dir/OpenMPCheckVersion.c.o] Error 1
+make: *** [cmTC_e7790/fast] Error 2
 
 
 
 Detecting CXX OpenMP version failed with the following output:
 Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_d3470/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_d3470.dir/build.make CMakeFiles/cmTC_d3470.dir/build
-Building CXX object CMakeFiles/cmTC_d3470.dir/OpenMPCheckVersion.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_d3470.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_d3470.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_d3470.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_c4077/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_c4077.dir/build.make CMakeFiles/cmTC_c4077.dir/build
+Building CXX object CMakeFiles/cmTC_c4077.dir/OpenMPCheckVersion.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_c4077.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_c4077.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_c4077.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
 /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp:3:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
-make[1]: *** [CMakeFiles/cmTC_d3470.dir/OpenMPCheckVersion.cpp.o] Error 1
-make: *** [cmTC_d3470/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_c4077.dir/OpenMPCheckVersion.cpp.o] Error 1
+make: *** [cmTC_c4077/fast] Error 2
 
 
 
 Detecting C OpenMP version failed with the following output:
 Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_fb105/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_fb105.dir/build.make CMakeFiles/cmTC_fb105.dir/build
-Building C object CMakeFiles/cmTC_fb105.dir/OpenMPCheckVersion.c.o
-/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_fb105.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_fb105.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_fb105.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_fe0c8/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_fe0c8.dir/build.make CMakeFiles/cmTC_fe0c8.dir/build
+Building C object CMakeFiles/cmTC_fe0c8.dir/OpenMPCheckVersion.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_fe0c8.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_fe0c8.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_fe0c8.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
 /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c:3:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
-make[1]: *** [CMakeFiles/cmTC_fb105.dir/OpenMPCheckVersion.c.o] Error 1
-make: *** [cmTC_fb105/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_fe0c8.dir/OpenMPCheckVersion.c.o] Error 1
+make: *** [cmTC_fe0c8/fast] Error 2
 
 
 
 Detecting CXX OpenMP version failed with the following output:
 Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_be076/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_be076.dir/build.make CMakeFiles/cmTC_be076.dir/build
-Building CXX object CMakeFiles/cmTC_be076.dir/OpenMPCheckVersion.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_be076.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_be076.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_be076.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_53217/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_53217.dir/build.make CMakeFiles/cmTC_53217.dir/build
+Building CXX object CMakeFiles/cmTC_53217.dir/OpenMPCheckVersion.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_53217.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_53217.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_53217.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
 /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp:3:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
-make[1]: *** [CMakeFiles/cmTC_be076.dir/OpenMPCheckVersion.cpp.o] Error 1
-make: *** [cmTC_be076/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_53217.dir/OpenMPCheckVersion.cpp.o] Error 1
+make: *** [cmTC_53217/fast] Error 2
 
 
 
 Detecting C OpenMP version failed with the following output:
 Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_d8581/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_d8581.dir/build.make CMakeFiles/cmTC_d8581.dir/build
-Building C object CMakeFiles/cmTC_d8581.dir/OpenMPCheckVersion.c.o
-/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_d8581.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_d8581.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_d8581.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_6a096/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_6a096.dir/build.make CMakeFiles/cmTC_6a096.dir/build
+Building C object CMakeFiles/cmTC_6a096.dir/OpenMPCheckVersion.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_6a096.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_6a096.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_6a096.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
 /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c:3:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
-make[1]: *** [CMakeFiles/cmTC_d8581.dir/OpenMPCheckVersion.c.o] Error 1
-make: *** [cmTC_d8581/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_6a096.dir/OpenMPCheckVersion.c.o] Error 1
+make: *** [cmTC_6a096/fast] Error 2
 
 
 
 Detecting CXX OpenMP version failed with the following output:
 Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_4d1eb/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_4d1eb.dir/build.make CMakeFiles/cmTC_4d1eb.dir/build
-Building CXX object CMakeFiles/cmTC_4d1eb.dir/OpenMPCheckVersion.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_4d1eb.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_4d1eb.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_4d1eb.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_eaa1c/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_eaa1c.dir/build.make CMakeFiles/cmTC_eaa1c.dir/build
+Building CXX object CMakeFiles/cmTC_eaa1c.dir/OpenMPCheckVersion.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_eaa1c.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_eaa1c.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_eaa1c.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
 /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp:3:10: fatal error: 'omp.h' file not found
 #include <omp.h>
          ^~~~~~~
 1 error generated.
-make[1]: *** [CMakeFiles/cmTC_4d1eb.dir/OpenMPCheckVersion.cpp.o] Error 1
-make: *** [cmTC_4d1eb/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_eaa1c.dir/OpenMPCheckVersion.cpp.o] Error 1
+make: *** [cmTC_eaa1c/fast] Error 2
+
+
+
+Detecting C OpenMP version failed with the following output:
+Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_b2112/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_b2112.dir/build.make CMakeFiles/cmTC_b2112.dir/build
+Building C object CMakeFiles/cmTC_b2112.dir/OpenMPCheckVersion.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_b2112.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_b2112.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_b2112.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c:3:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_b2112.dir/OpenMPCheckVersion.c.o] Error 1
+make: *** [cmTC_b2112/fast] Error 2
+
+
+
+Detecting CXX OpenMP version failed with the following output:
+Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_77ca4/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_77ca4.dir/build.make CMakeFiles/cmTC_77ca4.dir/build
+Building CXX object CMakeFiles/cmTC_77ca4.dir/OpenMPCheckVersion.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_77ca4.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_77ca4.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_77ca4.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
+/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp:3:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_77ca4.dir/OpenMPCheckVersion.cpp.o] Error 1
+make: *** [cmTC_77ca4/fast] Error 2
+
+
+
+Detecting C OpenMP version failed with the following output:
+Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_8eb9e/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_8eb9e.dir/build.make CMakeFiles/cmTC_8eb9e.dir/build
+Building C object CMakeFiles/cmTC_8eb9e.dir/OpenMPCheckVersion.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_8eb9e.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_8eb9e.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_8eb9e.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c:3:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_8eb9e.dir/OpenMPCheckVersion.c.o] Error 1
+make: *** [cmTC_8eb9e/fast] Error 2
+
+
+
+Detecting CXX OpenMP version failed with the following output:
+Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_fc723/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_fc723.dir/build.make CMakeFiles/cmTC_fc723.dir/build
+Building CXX object CMakeFiles/cmTC_fc723.dir/OpenMPCheckVersion.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_fc723.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_fc723.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_fc723.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
+/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp:3:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_fc723.dir/OpenMPCheckVersion.cpp.o] Error 1
+make: *** [cmTC_fc723/fast] Error 2
+
+
+
+Detecting C OpenMP version failed with the following output:
+Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_c0715/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_c0715.dir/build.make CMakeFiles/cmTC_c0715.dir/build
+Building C object CMakeFiles/cmTC_c0715.dir/OpenMPCheckVersion.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_c0715.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_c0715.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_c0715.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c:3:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^~~~~~~
+1 error generated.
+make[2]: *** [CMakeFiles/cmTC_c0715.dir/OpenMPCheckVersion.c.o] Error 1
+make[1]: *** [cmTC_c0715/fast] Error 2
+
+
+
+Detecting CXX OpenMP version failed with the following output:
+Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_a1790/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_a1790.dir/build.make CMakeFiles/cmTC_a1790.dir/build
+Building CXX object CMakeFiles/cmTC_a1790.dir/OpenMPCheckVersion.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_a1790.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_a1790.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_a1790.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
+/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp:3:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^~~~~~~
+1 error generated.
+make[2]: *** [CMakeFiles/cmTC_a1790.dir/OpenMPCheckVersion.cpp.o] Error 1
+make[1]: *** [cmTC_a1790/fast] Error 2
+
+
+
+Detecting C OpenMP version failed with the following output:
+Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ce75f/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_ce75f.dir/build.make CMakeFiles/cmTC_ce75f.dir/build
+Building C object CMakeFiles/cmTC_ce75f.dir/OpenMPCheckVersion.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_ce75f.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_ce75f.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_ce75f.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c:3:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_ce75f.dir/OpenMPCheckVersion.c.o] Error 1
+make: *** [cmTC_ce75f/fast] Error 2
+
+
+
+Detecting C OpenMP version failed with the following output:
+Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_9471f/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_9471f.dir/build.make CMakeFiles/cmTC_9471f.dir/build
+Building C object CMakeFiles/cmTC_9471f.dir/OpenMPCheckVersion.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_9471f.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_9471f.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_9471f.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c:3:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_9471f.dir/OpenMPCheckVersion.c.o] Error 1
+make: *** [cmTC_9471f/fast] Error 2
+
+
+
+Detecting CXX OpenMP version failed with the following output:
+Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_f07d4/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_f07d4.dir/build.make CMakeFiles/cmTC_f07d4.dir/build
+Building CXX object CMakeFiles/cmTC_f07d4.dir/OpenMPCheckVersion.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_f07d4.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_f07d4.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_f07d4.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
+/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp:3:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_f07d4.dir/OpenMPCheckVersion.cpp.o] Error 1
+make: *** [cmTC_f07d4/fast] Error 2
+
+
+
+Detecting C OpenMP version failed with the following output:
+Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_0722a/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_0722a.dir/build.make CMakeFiles/cmTC_0722a.dir/build
+Building C object CMakeFiles/cmTC_0722a.dir/OpenMPCheckVersion.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -MD -MT CMakeFiles/cmTC_0722a.dir/OpenMPCheckVersion.c.o -MF CMakeFiles/cmTC_0722a.dir/OpenMPCheckVersion.c.o.d -o CMakeFiles/cmTC_0722a.dir/OpenMPCheckVersion.c.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c
+/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.c:3:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_0722a.dir/OpenMPCheckVersion.c.o] Error 1
+make: *** [cmTC_0722a/fast] Error 2
+
+
+
+Detecting CXX OpenMP version failed with the following output:
+Change Dir: /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ba7ec/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_ba7ec.dir/build.make CMakeFiles/cmTC_ba7ec.dir/build
+Building CXX object CMakeFiles/cmTC_ba7ec.dir/OpenMPCheckVersion.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/c++   -Xpreprocessor -fopenmp -I/opt/homebrew/opt/llvm/include -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -std=gnu++2b -MD -MT CMakeFiles/cmTC_ba7ec.dir/OpenMPCheckVersion.cpp.o -MF CMakeFiles/cmTC_ba7ec.dir/OpenMPCheckVersion.cpp.o.d -o CMakeFiles/cmTC_ba7ec.dir/OpenMPCheckVersion.cpp.o -c /Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp
+/Users/patrickkeogh/CLionProjects/FYP/cmake-build-debug/CMakeFiles/FindOpenMP/OpenMPCheckVersion.cpp:3:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_ba7ec.dir/OpenMPCheckVersion.cpp.o] Error 1
+make: *** [cmTC_ba7ec/fast] Error 2
 
 
 

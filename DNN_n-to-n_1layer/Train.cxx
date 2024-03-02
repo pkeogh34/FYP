@@ -121,13 +121,12 @@ load(int epoch, Model* M)
 {
   filebuf inbuf;
   char fname[1024];
-  sprintf(fname, "trained-%d.model", epoch);
+  snprintf(fname, sizeof(fname), "trained-%d.model", epoch);
   if (inbuf.open(fname, ios::in) != 0) {
     istream is(&inbuf);
     M->read(is);
   } else {
     cout << "Failed to read file " << fname;
-    exit;
   }
   inbuf.close();
 }
@@ -137,13 +136,12 @@ save(int epoch, Model* M)
 {
   filebuf outbuf;
   char fname[1024];
-  sprintf(fname, "trained-%d.model", epoch);
+  snprintf(fname, sizeof(fname), "trained-%d.model", epoch);
   if (outbuf.open(fname, ios::out) != 0) {
     ostream os(&outbuf);
     M->write(os);
   } else {
     cout << "Failed to write to file " << fname;
-    exit;
   }
   outbuf.close();
 }
@@ -195,7 +193,7 @@ save_map(int epoch, Model* M)
 */
 
 void
-evaluate(Model* M, DataSet& D, char* which)
+evaluate(Model* M, DataSet& D, const char* which)
 {
 	int y;
 
@@ -349,7 +347,7 @@ main(int argc, char** argv)
   Model* M;
   if (Opt.readModel) {
     char tmp[1024];
-    sprintf(tmp, "trained-%d.model", Opt.readEpoch);
+    snprintf(tmp, sizeof(tmp), "trained-%d.model", Opt.readEpoch);
     cout << "Reading model from " << tmp << "\n";
     ifstream mstream(tmp);
     M = new Model(mstream);

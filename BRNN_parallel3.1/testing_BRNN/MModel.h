@@ -2,128 +2,123 @@
 #ifndef MModel_h
 #define MModel_h 1
 
-#include <stdlib.h>
-#include <math.h>
-#include "Sequence.h"
 #include "BRNN.h"
+#include "Sequence.h"
+#include <math.h>
+#include <stdlib.h>
 
+class MModel
+{
+private:
+	int nModels;
 
-class MModel {
- private:
-  int nModels;
+	int *NU;
+	int *NY;
+	int *NH;
 
-  int* NU;
-  int* NY;
-  int* NH;
+	int *context;
+	int *Moore;
 
-  int* context;
-  int* Moore; 
+	int *NF;
+	int *NB;
+	int *NH2;
 
-  int* NF;
-  int* NB;
-  int* NH2;
+	int *CoF;
+	int *CoB;
+	int *Cseg;
+	int *Cwin;
+	int *shortcut;
+	int *Step;
 
-  int* CoF;
-  int* CoB;
-  int* Cseg;
-  int* Cwin;
-  int* shortcut;
-  int* Step;
+	double **Thresholds;
 
-  double** Thresholds;
+	int cycles;
+	double *dcycles;
 
-  int cycles;
-  double* dcycles;
+	int *modular;
 
-  int* modular;
+	BRNN **Net;
+	BRNN **NetF;
 
+	int **Conf;
 
-  BRNN** Net;
-  BRNN** NetF;
+	//  double temp_error;
+	int temp_aas;
 
-  int** Conf;
+	int *counted;
+	double squared_error;
+	double error;
+	int nerrors;
+	int *nerrors_;
 
-//  double temp_error;
-  int temp_aas;
-  
-  int* counted;
-  double squared_error;
-  double error;
-  int nerrors;
-  int* nerrors_;
+	double epsilon;
 
-  double epsilon;
+	int target_class;
 
+	void alloc();
 
-  int target_class;
+public:
+	MModel(istream &is);
 
+	void predict(Sequence *seq);
+	void predict(Sequence *seq, int cy);
 
-  void alloc();
+	void predict(Sequence *seq, double threshold);
 
+	//  double* out() {return NetF->out();}
+	int **getConf() { return Conf; }
 
- public:
+	int getNErrors() { return nerrors; };
 
-  MModel(istream& is);
+	int getNErrors_(int i) { return nerrors_[i]; };
+	int getClasses() { return NY[0]; };
 
-  void predict(Sequence* seq);
-  void predict(Sequence* seq, int cy);
+	int *getCounted() { return counted; }
 
+	double *getdcycles() { return dcycles; }
 
-  void predict(Sequence* seq, double threshold);
+	void resetNErrors()
+	{
+		error = 0;
+		nerrors = 0;
+		memset(nerrors_, 0, NY[0] * sizeof(int));
+		memset(counted, 0, NY[0] * sizeof(int));
+		for (int p = 0; p < NY[0]; p++)
+			for (int y = 0; y < NY[0]; y++)
+				Conf[p][y] = 0;
+		for (int c = 0; c < cycles; c++)
+		{
+			dcycles[c] = 0;
+		}
+		for (int n = 0; n < nModels; n++)
+		{
+			Net[n]->resetError();
+			NetF[n]->resetError();
+		}
+	};
 
+	double get_error()
+	{
+		return error;
+	};
 
+	void reset_squared_error()
+	{
+		for (int n = 0; n < nModels; n++)
+		{
+			Net[n]->resetError();
+			NetF[n]->resetError();
+		}
+		for (int c = 0; c < cycles; c++)
+		{
+			dcycles[c] = 0;
+		}
+	};
 
-//  double* out() {return NetF->out();}
-  int** getConf() {return Conf;}
-
-  int getNErrors() { return nerrors;};
-
-  int getNErrors_(int i) { return nerrors_[i];};
-  int getClasses() { return NY[0];};
-
-  int* getCounted() {return counted;}
-
-
-  double* getdcycles() {return dcycles;}
-
-   void resetNErrors() { 
-	error=0;
-	nerrors=0;
-	memset(nerrors_,0,NY[0]*sizeof(int));
-	memset(counted,0,NY[0]*sizeof(int));
-	for (int p=0;p<NY[0];p++)
-	  for (int y=0;y<NY[0];y++)
-		Conf[p][y]=0;
-	  for (int c=0;c<cycles;c++) {
-		  dcycles[c]=0;
-	  }
-	for (int n=0;n<nModels;n++) {
-		Net[n]->resetError();
-		NetF[n]->resetError();
+	void set_target_class(int q)
+	{
+		target_class = q;
 	}
-	};
-
-  double get_error() { 
-	return error;
-	};
-
-  void reset_squared_error() { 
-	for (int n=0;n<nModels;n++) {
-		Net[n]->resetError();
-		NetF[n]->resetError();
-	}
-	  for (int c=0;c<cycles;c++) {
-		  dcycles[c]=0;
-	  }
-	};
-
-
-  void set_target_class(int q) {
-	target_class=q;
-  }
-
-
 };
-
 
 #endif // MModel_h

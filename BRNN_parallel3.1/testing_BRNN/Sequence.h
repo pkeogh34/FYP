@@ -3,289 +3,280 @@
 #ifndef Sequence_h
 #define Sequence_h 1
 
-#include <iostream>
 #include <cmath>
-#include <iostream>
-#include <fstream>
-#include <cstring>
 #include <cstdlib>
+#include <cstring>
+#include <fstream>
+#include <iostream>
 
-#define MAX_T 20000 //Formerly 8196
+#define MAX_T 20000 // Formerly 8196
 
 using namespace std;
 
-
-
-
-
-
-
-
-
-
-
-
-class Sequence {
+class Sequence
+{
 public:
+	char name[256];
 
+	double *u;
+	double *y;
+	int *y_pred;
+	double *y_pred_probs;
+	int *yc;
 
-char name[256];
+	int length;
 
-double* u;
-double* y;
-int* y_pred;
-double* y_pred_probs;
-int* yc;
+	int attributes;
+	int classes;
 
-int length;
+	Sequence(istream &is, int the_attributes, int the_classes, int quot = 0)
+	{
 
-int attributes;
-int classes;
+		int i;
+		char c;
 
+		attributes = the_attributes;
+		classes = the_classes;
 
+		char temp[MAX_T];
 
+		if (quot == 0)
+			is >> name;
+		is >> length;
 
-Sequence(istream& is, int the_attributes, int the_classes, int quot=0) {
+		//  cout << name << " " << length << " - " << flush;
+		u = new double[attributes * (length + 1)];
+		y = new double[length + 1];
+		yc = new int[length + 1];
+		y_pred = new int[length + 1];
+		y_pred_probs = new double[classes * (length + 1)];
+		memset(yc, 0, (length + 1) * sizeof(int));
+		memset(y_pred, 0, (length + 1) * sizeof(int));
+		memset(u, 0, (length + 1) * attributes * sizeof(double));
 
-  int i;
-  char c;
+		for (i = 0; i < length * attributes; i++)
+		{
+			is >> u[attributes + i];
+		}
 
+		if (quot == 0)
+			for (i = 1; i <= length; i++)
+			{
+				is >> y[i];
+			}
+	}
 
-attributes = the_attributes;
-classes = the_classes;
+	void write(ostream &os)
+	{
+		int i;
 
-  char temp[MAX_T];
+		os << name << "\n";
+		os << length << "\n";
 
-if (quot == 0)  is >> name;
-  is >> length;
+		for (i = 0; i < length * attributes; i++)
+		{
+			os << u[i + attributes] << " ";
+		}
+		os << "\n";
 
-//  cout << name << " " << length << " - " << flush;
-  u = new double[attributes*(length+1)];
-  y = new double[length+1];
-  yc = new int[length+1];
-  y_pred = new int[length+1];
-  y_pred_probs = new double[classes*(length+1)];
-  memset(yc,0,(length+1)*sizeof(int));
-  memset(y_pred,0,(length+1)*sizeof(int));
-  memset(u,0,(length+1)*attributes*sizeof(double));
+		for (i = 1; i <= length; i++)
+		{
+			os << y[i] << " ";
+		}
+		os << "\n";
+		for (i = 1; i <= length; i++)
+		{
+			os << yc[i];
+		}
+		os << "\n";
 
-  for (i=0;i<length*attributes;i++) {
-    is >> u[attributes+i];
-  }
+		for (i = 1; i <= length; i++)
+		{
+			os << y_pred[i];
+		}
+		os << "\n\n";
+	}
 
-if (quot == 0)
-  for (i=1;i<=length;i++) {
-    is >> y[i];
-  }
-}
+	void write_probs(ostream &os)
+	{
+		int i, t;
 
+		os << name << "\n";
+		os << length << "\n";
 
+		for (i = 0; i < length * attributes; i++)
+		{
 
+			os << u[attributes + i] << " ";
+		}
+		os << "\n";
 
-void write(ostream& os) {
-  int i;
+		for (i = 1; i <= length; i++)
+		{
+			os << y_pred[i] << " ";
+		}
+		os << "\n";
 
-  os<<name<<"\n";
-  os<<length<<"\n";
+		for (i = 0; i < classes; i++)
+		{
+			for (t = 1; t <= length; t++)
+			{
+				if (y_pred[t] == -1)
+					os << "0.0000\t";
+				else
+				{
+					char num[16];
+					snprintf(num, sizeof(num), "%.4f", y_pred_probs[classes * t + i]);
+					os << num << "\t";
+				}
+			}
+			os << "\n";
+		}
 
+		os << "\n\n";
+	};
 
-  for (i=0;i<length*attributes;i++) {
-    os << u[i+attributes] << " ";
-  }
-  os << "\n";
+	void write_predictions(ostream &os) const
+	{
+		int i, t;
 
-  for (i=1;i<=length;i++) {
-    os << y[i] << " ";
-  }
-  os << "\n";
-  for (i=1;i<=length;i++) {
-    os << yc[i];
-  }
-  os << "\n";
+		for (i = 0; i < length * attributes; i++)
+		{
+			os << u[attributes + i] << " ";
+		}
+		os << "\n";
 
-  for (i=1;i<=length;i++) {
-    os << y_pred[i];
-  }
-  os << "\n\n";
-}
+		for (i = 1; i <= length; i++)
+		{
+			os << y_pred[i] << " ";
+		}
+		os << "\n";
 
+		for (i = 0; i < classes; i++)
+		{
+			for (t = 1; t <= length; t++)
+			{
+				if (y_pred[t] == -1)
+					os << "0.0000\t";
+				else
+				{
+					char num[16];
+					snprintf(num, sizeof(num), "%.4f", y_pred_probs[classes * t + i]);
+					os << num << "\t";
+				}
+			}
+			os << "\n";
+		}
 
-
-void write_probs(ostream& os) {
-  int i,t;
-
-  os<<name<<"\n";
-  os<<length<<"\n";
-
-  for (i=0;i<length*attributes;i++) {
-  
-    os << u[attributes+i] << " ";
-  }
-  os << "\n";
-
-  for (i=1;i<=length;i++) {
-    os << y_pred[i] << " ";
-  }
-  os << "\n";
-
-  for (i=0;i<classes;i++) {
-	  for (t=1; t<=length; t++) {
-		  if (y_pred[t]==-1) os << "0.0000\t";
-		  else {
-			  char num[16];
-              snprintf(num, sizeof(num), "%.4f", y_pred_probs[classes*t+i]);
-			  os << num<<"\t";
-		  }
-	  }
-	  os<<"\n";
-  }
-
-      os << "\n\n";
+		os << "\n\n";
+	};
 };
 
-
-void write_predictions(ostream& os) const {
-  int i,t;
-
-  for (i=0;i<length*attributes;i++) {
-    os << u[attributes+i] << " ";
-  }
-  os << "\n";
-
-  for (i=1;i<=length;i++) {
-    os << y_pred[i] << " ";
-  }
-  os << "\n";
-
-  for (i=0;i<classes;i++) {
-	  for (t=1; t<=length; t++) {
-		  if (y_pred[t]==-1) os << "0.0000\t";
-		  else {
-			  char num[16];
-			  snprintf(num, sizeof(num), "%.4f", y_pred_probs[classes*t+i]);
-			  os << num<<"\t";
-		  }
-	  }
-	  os<<"\n";
-  }
-
-      os << "\n\n";
-};
-
-
-
-
-
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class DataSet {
+class DataSet
+{
 public:
-  int length;
-  Sequence** seq;
-  int totSize;
+	int length;
+	Sequence **seq;
+	int totSize;
 
-  int attributes;
-  int classes;
+	int attributes;
+	int classes;
 
-  DataSet() = default;;
+	DataSet() = default;
+	;
 
-  explicit DataSet(int the_length) {
-	totSize=0;
-	length=the_length;
-	seq = new Sequence*[length];
-  }
+	explicit DataSet(int the_length)
+	{
+		totSize = 0;
+		length = the_length;
+		seq = new Sequence *[length];
+	}
 
-  explicit DataSet(istream& is, int quot=0)
-    {
-	  totSize=0;
-      is >> length;
+	explicit DataSet(istream &is, int quot = 0)
+	{
+		totSize = 0;
+		is >> length;
 
-	  is >> attributes >> classes;
+		is >> attributes >> classes;
 
-	cout << length << " sequences, " << attributes << " attributes, " << classes << " classes\n" << flush;
-      seq = new Sequence*[length];
-      for (int p=0; p<length; p++) {
-		seq[p] = new Sequence(is,attributes,classes,quot);
-		totSize += seq[p]->length;
-      }
-    };
+		cout << length << " sequences, " << attributes << " attributes, " << classes << " classes\n"
+			 << flush;
+		seq = new Sequence *[length];
+		for (int p = 0; p < length; p++)
+		{
+			seq[p] = new Sequence(is, attributes, classes, quot);
+			totSize += seq[p]->length;
+		}
+	};
 
-  void write(ostream& os) const
-    {
-      os << length << "\n";
-      for (int p=0; p<length; p++) {
-	seq[p]->write(os);
-      }
-    };
-  void write(char* fname) const
-    {
-      filebuf outbuf;
-      if (outbuf.open(fname, ios::out) != nullptr) {
-	ostream os(&outbuf);
-	this->write(os);
-      } else {
-//	FAULT("Failed to write to file " << fname);
-      }
-      outbuf.close();
-    };
+	void write(ostream &os) const
+	{
+		os << length << "\n";
+		for (int p = 0; p < length; p++)
+		{
+			seq[p]->write(os);
+		}
+	};
+	void write(char *fname) const
+	{
+		filebuf outbuf;
+		if (outbuf.open(fname, ios::out) != nullptr)
+		{
+			ostream os(&outbuf);
+			this->write(os);
+		}
+		else
+		{
+			//	FAULT("Failed to write to file " << fname);
+		}
+		outbuf.close();
+	};
 
+	void write_probs(ostream &os) const
+	{
+		os << length << "\n";
+		for (int p = 0; p < length; p++)
+		{
+			seq[p]->write_probs(os);
+		}
+	};
+	void write_probs(char *fname) const
+	{
+		filebuf outbuf;
+		if (outbuf.open(fname, ios::out) != nullptr)
+		{
+			ostream os(&outbuf);
+			this->write_probs(os);
+		}
+		else
+		{
+			//	FAULT("Failed to write to file " << fname);
+		}
+		outbuf.close();
+	};
 
-  void write_probs(ostream& os) const
-    {
-      os << length << "\n";
-      for (int p=0; p<length; p++) {
-		seq[p]->write_probs(os);
-      }
-    };
-  void write_probs(char* fname) const
-    {
-      filebuf outbuf;
-      if (outbuf.open(fname, ios::out) != nullptr) {
-		ostream os(&outbuf);
-		this->write_probs(os);
-      } else {
-//	FAULT("Failed to write to file " << fname);
-      }
-      outbuf.close();
-    };
-
-
-  void write_predictions(ostream& os) const
-    {
-      os << length << "\n";
-      for (int p=0; p<length; p++) {
-		seq[p]->write_predictions(os);
-      }
-    };
-  void write_predictions(char* fname) const
-    {
-      filebuf outbuf;
-      if (outbuf.open(fname, ios::out) != nullptr) {
-		ostream os(&outbuf);
-		this->write_predictions(os);
-      } else {
-//	FAULT("Failed to write to file " << fname);
-      }
-      outbuf.close();
-    };
-
+	void write_predictions(ostream &os) const
+	{
+		os << length << "\n";
+		for (int p = 0; p < length; p++)
+		{
+			seq[p]->write_predictions(os);
+		}
+	};
+	void write_predictions(char *fname) const
+	{
+		filebuf outbuf;
+		if (outbuf.open(fname, ios::out) != nullptr)
+		{
+			ostream os(&outbuf);
+			this->write_predictions(os);
+		}
+		else
+		{
+			//	FAULT("Failed to write to file " << fname);
+		}
+		outbuf.close();
+	};
 };
-
-
 
 #endif // Sequence_h
