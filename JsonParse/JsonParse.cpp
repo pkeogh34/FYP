@@ -5,14 +5,12 @@
 #include <fstream>
 #include <sstream>
 
-std::unique_ptr<Protein> parseJson(const std::string &protein)
-{
+std::unique_ptr<Protein> parseJson(const std::string &protein) {
 	auto data = std::make_unique<Protein>();
 	std::stringstream ss(protein);
 	std::string temp, key, value;
 
-	while (getline(ss, temp, ','))
-	{
+	while (getline(ss, temp, ',')) {
 		std::stringstream pairStream(temp);
 		getline(pairStream, key, ':');
 		getline(pairStream, value, ':');
@@ -31,16 +29,13 @@ std::unique_ptr<Protein> parseJson(const std::string &protein)
 	return data;
 }
 
-std::vector<std::unique_ptr<Protein>> parseJsonArray(const std::string &jsonString)
-{
+std::vector<std::unique_ptr<Protein>> parseJsonArray(const std::string &jsonString) {
 	std::vector<std::unique_ptr<Protein>> dataArray;
 	std::stringstream ss(jsonString);
 	std::string token;
 
-	while (getline(ss, token, '}'))
-	{
-		if (token.find('{') != std::string::npos)
-		{
+	while (getline(ss, token, '}')) {
+		if (token.find('{') != std::string::npos) {
 			token += '}';
 			dataArray.push_back(parseJson(token));
 		}
@@ -48,11 +43,9 @@ std::vector<std::unique_ptr<Protein>> parseJsonArray(const std::string &jsonStri
 	return dataArray;
 }
 
-std::string readFileIntoString(const std::string &path)
-{
+std::string readFileIntoString(const std::string &path) {
 	std::ifstream input_file(path);
-	if (!input_file.is_open())
-	{
+	if (!input_file.is_open()) {
 		std::cerr << "Could not open the file - '" << path << "'" << std::endl;
 		return "";
 	}

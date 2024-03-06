@@ -25,8 +25,7 @@
 // -full shortcuts now operative
 //
 
-class BRNN
-{
+class BRNN {
 public:
 	int MAX;
 
@@ -85,8 +84,7 @@ public:
 	void resetGradient();
 	void initWeights(int seed);
 
-	void copy_dW(BRNN *from)
-	{
+	void copy_dW(BRNN *from) {
 		NetOut->copy_dW(from->NetOut);
 		NetF->copy_dW(from->NetF);
 		NetB->copy_dW(from->NetB);
@@ -127,14 +125,12 @@ public:
 	void extimation(double *seq, double *y, int length, int backp = 0);
 	void extimation(int *seq, double *y, int length, int backp = 0);
 
-	void backthrough(double *seq, double *y, int length, int backp = 0)
-	{
+	void backthrough(double *seq, double *y, int length, int backp = 0) {
 		NetOut->set_output(0);
 		extimation(seq, y, length, backp);
 		NetOut->set_output(1);
 	}
-	void backthrough(int *seq, double *y, int length, int backp = 0)
-	{
+	void backthrough(int *seq, double *y, int length, int backp = 0) {
 		NetOut->set_output(0);
 		extimation(seq, y, length, backp);
 		NetOut->set_output(1);
@@ -154,20 +150,16 @@ public:
 	double *out() const { return Y; }
 	double *back_out() const { return BP; }
 
-	double getError() const
-	{
+	double getError() const {
 		return error;
 	};
-	double getErrorF() const
-	{
+	double getErrorF() const {
 		return errorF;
 	};
-	double getErrorB() const
-	{
+	double getErrorB() const {
 		return errorB;
 	};
-	void resetError()
-	{
+	void resetError() {
 		error = 0.0;
 		errorF = 0.0;
 		errorB = 0.0;

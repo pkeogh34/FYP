@@ -5,8 +5,7 @@
 
 #include "NN.h"
 
-NN::NN(istream &is)
-{
+NN::NN(istream &is) {
 	is >> NO >> NH >> NI >> NIr >> which >> outp >> inp;
 	upper = new Layer_soft(is);
 	if (outp)
@@ -19,8 +18,7 @@ NN::NN(istream &is)
 	int i;
 	NK = new int[NI];
 	NItot = 0;
-	for (i = 0; i < NI; i++)
-	{
+	for (i = 0; i < NI; i++) {
 		NK[i] = lower->get_NK()[i];
 		NItot += NK[i];
 	}
@@ -30,8 +28,7 @@ NN::NN(istream &is)
 	backprop = new double[NItot + NIr];
 }
 
-void NN::read(istream &is)
-{
+void NN::read(istream &is) {
 	is >> NO >> NH >> NI >> NIr >> which >> outp >> inp;
 	upper->read(is);
 	if (outp)
@@ -43,8 +40,7 @@ void NN::read(istream &is)
 
 	int i;
 	NItot = 0;
-	for (i = 0; i < NI; i++)
-	{
+	for (i = 0; i < NI; i++) {
 		NK[i] = lower->get_NK()[i];
 		NItot += NK[i];
 	}
@@ -52,33 +48,28 @@ void NN::read(istream &is)
 		NK2[i] = lower->get_NK()[NI + i];
 }
 
-void NN::forward(int *I)
-{
+void NN::forward(int *I) {
 	lower->forward(I);
 	upper->forward(lower->out(), lower->out());
 }
 
-void NN::forward(double *I)
-{
+void NN::forward(double *I) {
 	lower->forward(I);
 	upper->forward(lower->out(), lower->out());
 }
 
-void NN::forward(int *I1, double *I2)
-{
+void NN::forward(int *I1, double *I2) {
 	lower->forward(I1, I2);
 	upper->forward(lower->out(), lower->out());
 }
 
-void NN::forward(double *I1, double *I2)
-{
+void NN::forward(double *I1, double *I2) {
 	lower->forward(I1, I2);
 	upper->forward(lower->out(), lower->out());
 }
 
 double
-NN::backward(double *t, double weight)
-{
+NN::backward(double *t, double weight) {
 	double err = upper->backward(t, weight);
 	double BKD[1024];
 	for (int i = 0; i < NH; i++)
@@ -93,59 +84,49 @@ NN::backward(double *t, double weight)
 	return err;
 }
 
-void NN::gradient(int *I, double *t)
-{
+void NN::gradient(int *I, double *t) {
 	upper->gradient();
 	lower->gradient(I);
 }
-void NN::gradient(double *I, double *t)
-{
+void NN::gradient(double *I, double *t) {
 	upper->gradient();
 	lower->gradient(I);
 }
-void NN::gradient(int *I1, double *I2, double *t)
-{
+void NN::gradient(int *I1, double *I2, double *t) {
 	upper->gradient();
 	lower->gradient(I1, I2);
 }
-void NN::gradient(double *I1, double *I2, double *t)
-{
+void NN::gradient(double *I1, double *I2, double *t) {
 	upper->gradient();
 	lower->gradient(I1, I2);
 }
 
-void NN::resetGradient()
-{
+void NN::resetGradient() {
 	lower->resetGradient();
 	upper->resetGradient();
 }
 
-void NN::updateWeights(double epsilon)
-{
+void NN::updateWeights(double epsilon) {
 	lower->updateWeights(epsilon);
 	upper->updateWeights(epsilon);
 }
 
-void NN::updateWeightsL1(double epsilon)
-{
+void NN::updateWeightsL1(double epsilon) {
 	lower->updateWeightsL1(epsilon);
 	upper->updateWeightsL1(epsilon);
 }
 
-void NN::updateWeightsClipped(double epsilon)
-{
+void NN::updateWeightsClipped(double epsilon) {
 	lower->updateWeightsClipped(epsilon);
 	upper->updateWeightsClipped(epsilon);
 }
 
-void NN::initWeights(int seed)
-{
+void NN::initWeights(int seed) {
 	lower->initWeights(seed);
 	upper->initWeights(seed);
 }
 
-void NN::write(ostream &os)
-{
+void NN::write(ostream &os) {
 	os << NO << " " << NH << " " << NI << " " << NIr << " ";
 	os << which << " " << outp << " " << inp << "\n";
 	upper->write(os);

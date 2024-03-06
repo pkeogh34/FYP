@@ -10,8 +10,7 @@
 #include <string>
 #include <unordered_map>
 
-class Protein
-{
+class Protein {
 public:
 	Protein() = default;
 	~Protein() = default;

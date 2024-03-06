@@ -1,98 +1,83 @@
 
-#include <math.h>
-#include <iostream>
 #include <fstream>
-#include <string.h>
+#include <iostream>
+#include <math.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "MModel.h"
 #include "Sequence.h"
 
 using namespace std;
 
+void evaluate(MModel *M, DataSet &D, char *which, int cycles) {
+	int y;
 
+	cout << "\n counting_" << which << "_errors" << flush;
+	M->resetNErrors();
+	int p;
+	for (p = 0; p < D.length; p++) {
+		M->predict(D.seq[p], cycles);
+		if (p % 20 == 0)
+			cout << "." << flush;
+	}
 
+	double a[128];
+	double all = 0;
 
+	for (y = 0; y < M->getClasses(); y++) {
+		a[y] = M->getCounted()[y];
+		all += a[y];
+	}
 
-void
-evaluate(MModel* M, DataSet& D, char* which, int cycles)
-{
-        int y;
+	cout << "\n\n"
+		 << which << cycles << "_NErrors= " << M->getNErrors() << "/" << all;
+	cout << " " << (double)M->getNErrors() / (double)(all) * 100.0;
 
-  cout << "\n counting_" << which << "_errors" << flush;
-  M->resetNErrors();
-  int p;
-  for (p=0; p<D.length; p++) {
-    M->predict(D.seq[p], cycles);
-    if (p%20==0) cout << "." << flush;
-  }
+	for (y = 0; y < M->getClasses(); y++) {
+		cout << "\nClass" << y << cycles << "= " << M->getNErrors_(y) << "/" << a[y];
+		cout << "\t" << (double)M->getNErrors_(y) / (double)a[y] * 100.0;
+	}
 
-double a[128];
-double all=0;
-
-for (y=0;y<M->getClasses();y++) {
-        a[y]=M->getCounted()[y];
-        all += a[y];
+	cout << "\n";
 }
 
-  cout << "\n\n" << which << cycles<<"_NErrors= " << M->getNErrors() << "/" << all;
-  cout << " " << (double)M->getNErrors()/(double)(all)*100.0;
+int main(int argc, char **argv) {
 
-for (y=0;y<M->getClasses();y++) {
-  cout << "\nClass" << y << cycles<<"= " << M->getNErrors_(y) << "/" << a[y];
-  cout << "\t" << (double)M->getNErrors_(y)/(double)a[y]*100.0;
-}
+	// This is for predicting
 
-  cout<<"\n";
+	if (argc < 3) {
+		cerr << "Usage: " << argv[0] << " model_file protein_file\n";
+		exit(1);
+	}
 
-}
+	char model[256];
+	char prot[256];
+	char tmp[256];
+	//        char alig[256];
+	strcpy(model, argv[1]);
+	strcpy(prot, argv[2]);
+	//        strcpy(alig,argv[3]);
 
+	double th = 0.5;
 
+	MModel *M;
+	strcpy(tmp, model);
+	ifstream mstream(tmp);
+	M = new MModel(mstream);
 
+	cout << "Reading " << prot << " .. ";
+	ifstream tstream(prot);
+	DataSet T(tstream);
 
+	cout << "read\n"
+		 << flush;
 
-
-
-
-int
-main(int argc, char** argv)
-{
-
-// This is for predicting
-
-
-  if (argc<3) {
-    cerr << "Usage: " << argv[0] << " model_file protein_file\n";
-    exit(1);
-  }
-
-    char model[256];
-    char prot[256];
-    char tmp[256];
-//        char alig[256];
-        strcpy(model,argv[1]);
-        strcpy(prot,argv[2]);
-//        strcpy(alig,argv[3]);
-
-        double th = 0.5;
-
-
-    MModel* M;
-    strcpy(tmp, model);
-    ifstream mstream(tmp);
-    M = new MModel(mstream);
-
-  cout << "Reading " << prot << " .. ";
-  ifstream tstream(prot);
-  DataSet T(tstream);
-
-cout << "read\n" << flush;
-
-evaluate(M, T, prot, 1);
-strcat(prot,".predictions");
-T.write(prot);
-evaluate(M, T, prot, 2);
-strcat(prot,"F");
-T.write(prot);
-        return 0;
+	evaluate(M, T, prot, 1);
+	strcat(prot, ".predictions");
+	T.write(prot);
+	evaluate(M, T, prot, 2);
+	strcat(prot, "F");
+	T.write(prot);
+	return 0;
 }

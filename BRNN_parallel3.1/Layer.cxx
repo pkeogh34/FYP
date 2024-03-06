@@ -15,76 +15,57 @@
 
 // #define nthr 1
 
-void Layer::softmax()
-{
+void Layer::softmax() {
 	int y;
 
 	int overflow = 0;
 	double max = A[0];
 	int amax = 0;
 	double norm = 0;
-	for (y = 0; y < NY; y++)
-	{
-		if (A[y] > 25)
-		{
+	for (y = 0; y < NY; y++) {
+		if (A[y] > 25) {
 			overflow = 1;
-		}
-		else
-		{
+		} else {
 			norm += (double)exp(A[y]);
 		}
-		if (A[y] > max)
-		{
+		if (A[y] > max) {
 			max = A[y];
 			amax = y;
 		}
 	}
 
-	if (overflow)
-	{
-		for (y = 0; y < NY; y++)
-		{
+	if (overflow) {
+		for (y = 0; y < NY; y++) {
 			Y[y] = miny;
 		}
 		Y[amax] = 1.0 - miny * (NY - 1);
-	}
-	else
-	{
-		for (y = 0; y < NY; y++)
-		{
+	} else {
+		for (y = 0; y < NY; y++) {
 			Y[y] = (double)exp(A[y]) / norm;
 		}
 	}
-	for (y = 0; y < NY; y++)
-	{
-		if (Y[y] < miny)
-		{
+	for (y = 0; y < NY; y++) {
+		if (Y[y] < miny) {
 			Y[y] = miny;
 		}
 	}
 }
 
-void Layer::squash()
-{
-	if (relu)
-	{
-		for (int y = 0; y < NY; y++)
-		{
+void Layer::squash() {
+	if (relu) {
+		for (int y = 0; y < NY; y++) {
 			if (A[y] > 0)
 				Y[y] = A[y];
 			else
 				Y[y] = 0.01 * A[y];
 		}
-	}
-	else
-	{
+	} else {
 		for (int y = 0; y < NY; y++)
 			Y[y] = (double)tanh(A[y]);
 	}
 }
 
-void Layer::alloc(int NY, int nu, int *NK)
-{
+void Layer::alloc(int NY, int nu, int *NK) {
 	int y, u;
 	NUtot = 0;
 
@@ -108,8 +89,7 @@ void Layer::alloc(int NY, int nu, int *NK)
 	memset(d2B, 0, NY * sizeof(double));
 }
 
-Layer::Layer(istream &is)
-{
+Layer::Layer(istream &is) {
 	int y, u, k;
 
 	is >> NY;
@@ -120,17 +100,14 @@ Layer::Layer(istream &is)
 	for (u = 0; u < NU + NUr; u++)
 		is >> NK[u];
 	NUplain = 0;
-	for (u = 0; u < NU; u++)
-	{
+	for (u = 0; u < NU; u++) {
 		NUplain += NK[u];
 	}
 
 	alloc(NY, NU + NUr, NK);
 
-	for (y = 0; y < NY; y++)
-	{
-		for (u = 0; u < NUtot; u++)
-		{
+	for (y = 0; y < NY; y++) {
+		for (u = 0; u < NUtot; u++) {
 			is >> W[y * NUtot + u];
 		}
 		is >> B[y];
@@ -139,8 +116,7 @@ Layer::Layer(istream &is)
 	output = 0;
 }
 
-void Layer::read(istream &is)
-{
+void Layer::read(istream &is) {
 	int y, u, k;
 
 	is >> NY;
@@ -150,16 +126,13 @@ void Layer::read(istream &is)
 	for (u = 0; u < NU + NUr; u++)
 		is >> NK[u];
 	NUplain = 0;
-	for (u = 0; u < NU; u++)
-	{
+	for (u = 0; u < NU; u++) {
 		NUplain += NK[u];
 	}
 	NUtot = NUplain + NUr;
 
-	for (y = 0; y < NY; y++)
-	{
-		for (u = 0; u < NUtot; u++)
-		{
+	for (y = 0; y < NY; y++) {
+		for (u = 0; u < NUtot; u++) {
 			is >> W[y * NUtot + u];
 		}
 		is >> B[y];
@@ -168,8 +141,7 @@ void Layer::read(istream &is)
 	output = 0;
 }
 
-void Layer::write(ostream &os)
-{
+void Layer::write(ostream &os) {
 	int y, u, k;
 
 	os << NY << "\n";
@@ -180,29 +152,23 @@ void Layer::write(ostream &os)
 		os << NK[u] << " ";
 	os << "\n";
 
-	for (y = 0; y < NY; y++)
-	{
-		for (u = 0; u < NUtot; u++)
-		{
+	for (y = 0; y < NY; y++) {
+		for (u = 0; u < NUtot; u++) {
 			os << W[y * NUtot + u] << " ";
 		}
 		os << B[y] << "\n";
 	}
 }
 
-void Layer::forward(int *I)
-{
+void Layer::forward(int *I) {
 	int y, u, nur;
 	memset(U, 0, NUtot * sizeof(double));
 
-	for (y = 0; y < NY; y++)
-	{
+	for (y = 0; y < NY; y++) {
 		double a = B[y];
 		nur = 0;
-		for (u = 0; u < NU; u++)
-		{
-			if (I[u] >= 0)
-			{
+		for (u = 0; u < NU; u++) {
+			if (I[u] >= 0) {
 				a += W[y * NUtot + u * NK[0] + I[u]];
 				U[nur + I[u]] = 1.0;
 			}
@@ -212,17 +178,14 @@ void Layer::forward(int *I)
 	}
 }
 
-void Layer::forward(double *I)
-{
+void Layer::forward(double *I) {
 	int y, u, k, i;
 	memset(U, 0, NUtot * sizeof(double));
 
-	for (y = 0; y < NY; y++)
-	{
+	for (y = 0; y < NY; y++) {
 		i = 0;
 		double a = B[y];
-		for (u = 0; u < NUplain; u++)
-		{
+		for (u = 0; u < NUplain; u++) {
 			U[i] = I[i];
 			a += W[y * NUtot + u] * I[i++];
 		}
@@ -230,20 +193,16 @@ void Layer::forward(double *I)
 	}
 }
 
-void Layer::forward(int *I1, double *I2)
-{
+void Layer::forward(int *I1, double *I2) {
 	int y, u, k, i, nur;
 	memset(U, 0, NUtot * sizeof(double));
 
-	for (y = 0; y < NY; y++)
-	{
+	for (y = 0; y < NY; y++) {
 		double a = B[y];
 		nur = 0;
 
-		for (u = 0; u < NU; u++)
-		{
-			if (I1[u] >= 0)
-			{
+		for (u = 0; u < NU; u++) {
+			if (I1[u] >= 0) {
 				a += W[y * NUtot + u * NK[0] + I1[u]];
 				U[nur + I1[u]] = 1.0;
 			}
@@ -251,8 +210,7 @@ void Layer::forward(int *I1, double *I2)
 		}
 
 		i = 0;
-		for (u = 0; u < NUr; u++)
-		{
+		for (u = 0; u < NUr; u++) {
 			U[NUplain + i] = I2[i];
 			a += W[y * NUtot + NUplain + u] * I2[i++];
 		}
@@ -260,23 +218,19 @@ void Layer::forward(int *I1, double *I2)
 	}
 }
 
-void Layer::forward(double *I1, double *I2)
-{
+void Layer::forward(double *I1, double *I2) {
 	int y, u, k, i1, i2;
 
-	for (y = 0; y < NY; y++)
-	{
+	for (y = 0; y < NY; y++) {
 		i1 = 0;
 		i2 = 0;
 		double a = B[y];
-		for (u = 0; u < NUplain; u++)
-		{
+		for (u = 0; u < NUplain; u++) {
 			U[i1] = I1[i1];
 			a += W[y * NUtot + u] * I1[i1];
 			i1++;
 		}
-		for (u = 0; u < NUr; u++)
-		{
+		for (u = 0; u < NUr; u++) {
 			U[NUplain + i2] = I2[i2];
 			a += W[y * NUtot + NUplain + u] * I2[i2];
 			i2++;
@@ -304,14 +258,12 @@ int y,u,k,i1,i2;
 */
 
 double
-Layer::f1(int y)
-{
+Layer::f1(int y) {
 	return 1.0;
 }
 
 double
-Layer::f_cost(double *t)
-{
+Layer::f_cost(double *t) {
 	double sum = 0.0;
 	//	cout << "L"<<flush;
 
@@ -321,12 +273,10 @@ Layer::f_cost(double *t)
 }
 
 double
-Layer::log_cost(double *t)
-{
+Layer::log_cost(double *t) {
 	double sum = 0.0;
 
-	for (int y = 0; y < NY; y++)
-	{
+	for (int y = 0; y < NY; y++) {
 		if ((t[y]) && (Y[y]))
 			sum -= t[y] * (double)log(Y[y]);
 	}
@@ -334,20 +284,17 @@ Layer::log_cost(double *t)
 }
 
 double
-Layer::sq_cost(double *t)
-{
+Layer::sq_cost(double *t) {
 	double sum = 0.0;
 
-	for (int y = 0; y < NY; y++)
-	{
+	for (int y = 0; y < NY; y++) {
 		sum += (t[y] - Y[y]) * (t[y] - Y[y]);
 	}
 	return sum;
 }
 
 double
-Layer::backward(double *rbackprop, double weight)
-{
+Layer::backward(double *rbackprop, double weight) {
 	int y, u, k;
 
 	double BKD[1024];
@@ -357,20 +304,16 @@ Layer::backward(double *rbackprop, double weight)
 	// If isn't an output layer
 	// rbackprop[] is a backprop contribution
 	// coming from upwards.
-	if (!output)
-	{
-		for (y = 0; y < NY; y++)
-		{
+	if (!output) {
+		for (y = 0; y < NY; y++) {
 			BKD[y] *= f1(y);
 			delta[y] = weight * BKD[y];
 		}
 	}
 	// If this is an output layer
 	// rbackprop[] is the target vector.
-	else
-	{
-		for (y = 0; y < NY; y++)
-		{
+	else {
+		for (y = 0; y < NY; y++) {
 			delta[y] = weight * (Y[y] - BKD[y]) * f1(y);
 		}
 	}
@@ -382,25 +325,18 @@ Layer::backward(double *rbackprop, double weight)
 	// the backprop contribution
 	// must be computed, either for
 	// the real input part or fully.
-	if (ninput == 1)
-	{
-		for (u = 0; u < NUr; u++)
-		{
+	if (ninput == 1) {
+		for (u = 0; u < NUr; u++) {
 			sum = 0.0;
-			for (y = 0; y < NY; y++)
-			{
+			for (y = 0; y < NY; y++) {
 				sum += W[y * NUtot + NUplain + u] * delta[y];
 			}
 			backprop[NUplain + u] = sum;
 		}
-	}
-	else if (ninput == 2)
-	{
-		for (u = 0; u < NUtot; u++)
-		{
+	} else if (ninput == 2) {
+		for (u = 0; u < NUtot; u++) {
 			sum = 0.0;
-			for (y = 0; y < NY; y++)
-			{
+			for (y = 0; y < NY; y++) {
 				sum += W[y * NUtot + u] * delta[y];
 			}
 			backprop[u] = sum;
@@ -408,12 +344,9 @@ Layer::backward(double *rbackprop, double weight)
 	}
 
 	double err = 0.0;
-	if (output)
-	{
+	if (output) {
 		err = f_cost(rbackprop);
-	}
-	else
-	{
+	} else {
 		for (int yyy = 0; yyy < NY; yyy++)
 			err += delta[yyy] * delta[yyy];
 	}
@@ -421,8 +354,7 @@ Layer::backward(double *rbackprop, double weight)
 }
 
 double
-Layer_soft::backward(double *rbackprop, double weight)
-{
+Layer_soft::backward(double *rbackprop, double weight) {
 	int y, u, k;
 
 	double BKD[1024];
@@ -432,20 +364,16 @@ Layer_soft::backward(double *rbackprop, double weight)
 	// If isn't an output layer
 	// rbackprop[] is a backprop contribution
 	// coming from upwards.
-	if (!output)
-	{
-		for (y = 0; y < NY; y++)
-		{
+	if (!output) {
+		for (y = 0; y < NY; y++) {
 			BKD[y] *= f1(y);
 			delta[y] = weight * BKD[y];
 		}
 	}
 	// If this is an output layer
 	// rbackprop[] is the target vector.
-	else
-	{
-		for (y = 0; y < NY; y++)
-		{
+	else {
+		for (y = 0; y < NY; y++) {
 			delta[y] = weight * (Y[y] - BKD[y]);
 		}
 	}
@@ -457,26 +385,20 @@ Layer_soft::backward(double *rbackprop, double weight)
 	// the backprop contribution
 	// must be computed, either for
 	// the real input part or fully.
-	if (ninput == 1)
-	{
-		for (u = 0; u < NUr; u++)
-		{
+	if (ninput == 1) {
+		for (u = 0; u < NUr; u++) {
 			sum = 0.0;
-			for (y = 0; y < NY; y++)
-			{
+			for (y = 0; y < NY; y++) {
 				sum += W[y * NUtot + NUplain + u] * delta[y];
 			}
 			backprop[NUplain + u] = sum;
 		}
 	}
 	//}
-	else if (ninput == 2)
-	{
-		for (u = 0; u < NUtot; u++)
-		{
+	else if (ninput == 2) {
+		for (u = 0; u < NUtot; u++) {
 			sum = 0.0;
-			for (y = 0; y < NY; y++)
-			{
+			for (y = 0; y < NY; y++) {
 				sum += W[y * NUtot + u] * delta[y];
 			}
 			backprop[u] = sum;
@@ -484,28 +406,21 @@ Layer_soft::backward(double *rbackprop, double weight)
 	}
 
 	double err = 0.0;
-	if (output)
-	{
+	if (output) {
 		err = f_cost(rbackprop);
-	}
-	else
-	{
+	} else {
 		for (int yyy = 0; yyy < NY; yyy++)
 			err += delta[yyy] * delta[yyy];
 	}
 	return err;
 }
 
-void Layer::gradient(int *I)
-{
+void Layer::gradient(int *I) {
 	int y, u;
 
-	for (y = 0; y < NY; y++)
-	{
-		for (u = 0; u < NU; u++)
-		{
-			if (I[u] >= 0)
-			{
+	for (y = 0; y < NY; y++) {
+		for (u = 0; u < NU; u++) {
+			if (I[u] >= 0) {
 				dW[y * NUtot + u * NK[0] + I[u]] += delta[y];
 			}
 		}
@@ -513,61 +428,49 @@ void Layer::gradient(int *I)
 	}
 }
 
-void Layer::gradient(double *I)
-{
+void Layer::gradient(double *I) {
 	int y, u, k;
 	int i;
 
-	for (y = 0; y < NY; y++)
-	{
+	for (y = 0; y < NY; y++) {
 		i = 0;
-		for (u = 0; u < NUplain; u++)
-		{
+		for (u = 0; u < NUplain; u++) {
 			dW[y * NUtot + u] += delta[y] * I[i++];
 		}
 		dB[y] += delta[y];
 	}
 }
 
-void Layer::gradient(int *I1, double *I2)
-{
+void Layer::gradient(int *I1, double *I2) {
 	int y, u, k;
 	int i;
 
-	for (y = 0; y < NY; y++)
-	{
-		for (u = 0; u < NU; u++)
-		{
-			if (I1[u] >= 0)
-			{
+	for (y = 0; y < NY; y++) {
+		for (u = 0; u < NU; u++) {
+			if (I1[u] >= 0) {
 				dW[y * NUtot + u * NK[0] + I1[u]] += delta[y];
 			}
 		}
 		i = 0;
-		for (u = 0; u < NUr; u++)
-		{
+		for (u = 0; u < NUr; u++) {
 			dW[y * NUtot + NUplain + u] += delta[y] * I2[i++];
 		}
 		dB[y] += delta[y];
 	}
 }
 
-void Layer::gradient(double *I1, double *I2)
-{
+void Layer::gradient(double *I1, double *I2) {
 	int y, u, k;
 	int i1, i2;
 
-	for (y = 0; y < NY; y++)
-	{
+	for (y = 0; y < NY; y++) {
 		i1 = 0;
-		for (u = 0; u < NUplain; u++)
-		{
+		for (u = 0; u < NUplain; u++) {
 			dW[y * NUtot + u] += delta[y] * I1[i1];
 			i1++;
 		}
 		i2 = 0;
-		for (u = 0; u < NUr; u++)
-		{
+		for (u = 0; u < NUr; u++) {
 			dW[y * NUtot + NUplain + u] += delta[y] * I2[i2];
 			i2++;
 		}
@@ -592,13 +495,11 @@ for (y=0; y<NY; y++) {
 }
 */
 
-void Layer::gradient()
-{
+void Layer::gradient() {
 	gradient(U, &(U[NUplain]));
 }
 
-double sign(double a)
-{
+double sign(double a) {
 	if (a > 0)
 		return 1.0;
 	if (a < 0)
@@ -606,8 +507,7 @@ double sign(double a)
 	return 0.0;
 }
 
-double clipped(double a)
-{
+double clipped(double a) {
 	double b = sign(a) * a;
 	if (b > 1)
 		return sign(a) * 1.0;
@@ -616,13 +516,10 @@ double clipped(double a)
 	return a;
 }
 
-void Layer::updateWeights(double epsilon)
-{
+void Layer::updateWeights(double epsilon) {
 	int y, u, k;
-	for (y = 0; y < NY; y++)
-	{
-		for (u = 0; u < NUtot; u++)
-		{
+	for (y = 0; y < NY; y++) {
+		for (u = 0; u < NUtot; u++) {
 			d2W[y * NUtot + u] = momentum * d2W[y * NUtot + u] + dW[y * NUtot + u];
 			W[y * NUtot + u] -= epsilon * d2W[y * NUtot + u];
 		}
@@ -631,89 +528,71 @@ void Layer::updateWeights(double epsilon)
 	}
 }
 
-void Layer::updateWeightsL1(double epsilon)
-{
+void Layer::updateWeightsL1(double epsilon) {
 	int y, u, k;
 	double sum = 0;
 
-	for (y = 0; y < NY; y++)
-	{
-		for (u = 0; u < NUtot; u++)
-		{
+	for (y = 0; y < NY; y++) {
+		for (u = 0; u < NUtot; u++) {
 			sum += dW[y * NUtot + u] * dW[y * NUtot + u];
 		}
 		sum += dB[y] * dB[y];
 	}
 	sum = sqrt(sum);
-	for (y = 0; y < NY; y++)
-	{
-		for (u = 0; u < NUtot; u++)
-		{
+	for (y = 0; y < NY; y++) {
+		for (u = 0; u < NUtot; u++) {
 			W[y * NUtot + u] -= epsilon * dW[y * NUtot + u] / sum;
 		}
 		B[y] -= epsilon * dB[y] / sum;
 	}
 }
 
-void Layer::updateWeightsClipped(double epsilon)
-{
+void Layer::updateWeightsClipped(double epsilon) {
 	int y, u, k;
-	for (y = 0; y < NY; y++)
-	{
-		for (u = 0; u < NUtot; u++)
-		{
+	for (y = 0; y < NY; y++) {
+		for (u = 0; u < NUtot; u++) {
 			W[y * NUtot + u] -= epsilon * clipped(dW[y * NUtot + u]);
 		}
 		B[y] -= epsilon * clipped(dB[y]);
 	}
 }
 
-void Layer::resetGradient()
-{
+void Layer::resetGradient() {
 	int y, u;
 	memset(dW, 0, NY * NUtot * sizeof(double));
 	memset(dB, 0, NY * sizeof(double));
 }
 
-void Layer::initWeights(int seed)
-{
+void Layer::initWeights(int seed) {
 	int y, u, k;
 	double D = (double)(NU + NUr);
 	D = sqrt(D);
 
 	// srand48(seed);
 	srand(seed);
-	for (y = 0; y < NY; y++)
-	{
-		for (u = 0; u < NUtot; u++)
-		{
+	for (y = 0; y < NY; y++) {
+		for (u = 0; u < NUtot; u++) {
 			W[y * NUtot + u] = (double)(0.5 - (double)rand() / (double(RAND_MAX))) / D;
 		}
 		B[y] = (double)(0.5 - (double)rand() / (double(RAND_MAX))) / D;
 	}
 }
 
-void Layer::set_dW(double *newdW)
-{
-	for (int y = 0; y < NY; y++)
-	{
-		for (int u = 0; u < NUtot; u++)
-		{
+void Layer::set_dW(double *newdW) {
+	for (int y = 0; y < NY; y++) {
+		for (int u = 0; u < NUtot; u++) {
 			dW[y * NUtot + u] = newdW[y * NUtot + u];
 		}
 	}
 }
 
 double
-Layer::dlength()
-{
+Layer::dlength() {
 	int y, u, k;
 	double sum = 0.0;
 
-	for (y = 0; y < NY; y++)
-	{
-		for (u = 0; u < NUtot; u++)
-		{
+	for (y = 0; y < NY; y++) {
+		for (u = 0; u < NUtot; u++) {
 			sum += dW[y * NUtot + u] * dW[y * NUtot + u];
 		}
 		sum += dB[y] * dB[y];
@@ -724,14 +603,12 @@ Layer::dlength()
 // Layer_soft
 
 double
-Layer_soft::f1(int y)
-{
+Layer_soft::f1(int y) {
 	return (Y[y] - Y[y] * Y[y]);
 }
 
 double
-Layer_soft::f_cost(double *t)
-{
+Layer_soft::f_cost(double *t) {
 	//	cout << "S"<<flush;
 	return Layer::log_cost(t);
 }
@@ -739,24 +616,19 @@ Layer_soft::f_cost(double *t)
 // Layer_tanh
 
 double
-Layer_tanh::f1(int y)
-{
-	if (relu)
-	{
+Layer_tanh::f1(int y) {
+	if (relu) {
 		if (A[y] > 0)
 			return 1.0;
 		else
 			return 0.01;
-	}
-	else
-	{
+	} else {
 		return 1.0 - (Y[y] * Y[y]);
 	}
 }
 
 double
-Layer_tanh::f_cost(double *t)
-{
+Layer_tanh::f_cost(double *t) {
 	//	cout << "T"<<flush;
 	return Layer::sq_cost(t);
 }

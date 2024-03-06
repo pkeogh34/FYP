@@ -7,8 +7,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-class Model
-{
+class Model {
 private:
 	int NU;
 	int NY;
@@ -82,8 +81,7 @@ public:
 
 	double *getdcycles() { return dcycles; }
 
-	void resetNErrors()
-	{
+	void resetNErrors() {
 		error = 0;
 		nerrors = 0;
 		memset(nerrors_, 0, NY * sizeof(int));
@@ -91,46 +89,37 @@ public:
 		for (int p = 0; p < NY; p++)
 			for (int y = 0; y < NY; y++)
 				Conf[p][y] = 0;
-		for (int c = 0; c < cycles; c++)
-		{
+		for (int c = 0; c < cycles; c++) {
 			dcycles[c] = 0;
 		}
 		Net->resetError();
 		NetF->resetError();
 	};
 
-	double get_error()
-	{
+	double get_error() {
 		return error;
 	};
-	double get_squared_error()
-	{
+	double get_squared_error() {
 		return Net->getError();
 	};
-	double get_squared_errorf()
-	{
+	double get_squared_errorf() {
 		return NetF->getError();
 	};
-	double get_squared_errorF()
-	{
+	double get_squared_errorF() {
 		return Net->getErrorF();
 	};
-	double get_squared_errorB()
-	{
+	double get_squared_errorB() {
 		return Net->getErrorB();
 	};
-	void reset_squared_error()
-	{
+	void reset_squared_error() {
 		Net->resetError();
 		NetF->resetError();
-		for (int c = 0; c < cycles; c++)
-		{
+		for (int c = 0; c < cycles; c++) {
 			dcycles[c] = 0;
 		}
 	};
 
-	void setEpsilon(double eps)
-	{
+	void setEpsilon(double eps) {
 		Net->setEpsilon(eps);
 		NetF->setEpsilon(eps);
 	};

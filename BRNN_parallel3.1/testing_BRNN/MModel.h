@@ -7,8 +7,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-class MModel
-{
+class MModel {
 private:
 	int nModels;
 
@@ -77,8 +76,7 @@ public:
 
 	double *getdcycles() { return dcycles; }
 
-	void resetNErrors()
-	{
+	void resetNErrors() {
 		error = 0;
 		nerrors = 0;
 		memset(nerrors_, 0, NY[0] * sizeof(int));
@@ -86,37 +84,30 @@ public:
 		for (int p = 0; p < NY[0]; p++)
 			for (int y = 0; y < NY[0]; y++)
 				Conf[p][y] = 0;
-		for (int c = 0; c < cycles; c++)
-		{
+		for (int c = 0; c < cycles; c++) {
 			dcycles[c] = 0;
 		}
-		for (int n = 0; n < nModels; n++)
-		{
+		for (int n = 0; n < nModels; n++) {
 			Net[n]->resetError();
 			NetF[n]->resetError();
 		}
 	};
 
-	double get_error()
-	{
+	double get_error() {
 		return error;
 	};
 
-	void reset_squared_error()
-	{
-		for (int n = 0; n < nModels; n++)
-		{
+	void reset_squared_error() {
+		for (int n = 0; n < nModels; n++) {
 			Net[n]->resetError();
 			NetF[n]->resetError();
 		}
-		for (int c = 0; c < cycles; c++)
-		{
+		for (int c = 0; c < cycles; c++) {
 			dcycles[c] = 0;
 		}
 	};
 
-	void set_target_class(int q)
-	{
+	void set_target_class(int q) {
 		target_class = q;
 	}
 };

@@ -2,8 +2,7 @@
 
 #include "Model.h"
 
-void Model::alloc()
-{
+void Model::alloc() {
 
 	counted = new int[NY];
 	nerrors_ = new int[NY];
@@ -18,8 +17,7 @@ Model::Model(int the_NU, int the_NY, int the_NH, int the_context, int the_Moore,
 			 int the_NB, int the_NH2, int the_CoF, int the_CoB, int the_Cseg, int the_Cwin, int the_Step,
 			 int the_shortcut, double *the_Thresholds, int the_cycles) : NU(the_NU), NY(the_NY), NH(the_NH), context(the_context), Moore(the_Moore), NF(the_NF), NB(the_NB),
 																		 NH2(the_NH2), CoF(the_CoF), CoB(the_CoB), Cseg(the_Cseg), Cwin(the_Cwin), Step(the_Step), shortcut(the_shortcut),
-																		 cycles(the_cycles)
-{
+																		 cycles(the_cycles) {
 
 	Thresholds = new double[NY];
 	for (int y = 0; y < NY - 1; y++)
@@ -33,8 +31,7 @@ Model::Model(int the_NU, int the_NY, int the_NH, int the_context, int the_Moore,
 	alloc();
 }
 
-Model::Model(istream &is)
-{
+Model::Model(istream &is) {
 	is >> NU >> NY >> NH >> context;
 	is >> NF >> NB >> NH2 >> CoF >> CoB >> Cseg >> Cwin >> Step >> shortcut >> Moore >> cycles;
 
@@ -50,8 +47,7 @@ Model::Model(istream &is)
 	alloc();
 }
 
-void Model::read(istream &is)
-{
+void Model::read(istream &is) {
 	is >> NU >> NY >> NH >> context;
 	is >> NF >> NB >> NH2 >> CoF >> CoB >> Cseg >> Cwin >> Step >> shortcut >> Moore >> cycles;
 	for (int y = 0; y < NY - 1; y++)
@@ -63,8 +59,7 @@ void Model::read(istream &is)
 	NetF->resetGradient();
 }
 
-void Model::write(ostream &os)
-{
+void Model::write(ostream &os) {
 	os << NU << " " << NY << " " << NH << " " << context << "\n";
 	os << NF << " " << NB << " " << NH2 << " " << CoF << " " << CoB << " " << Cseg << " " << Cwin << " " << Step << " " << shortcut << " " << Moore << " " << cycles << "\n";
 
@@ -76,15 +71,13 @@ void Model::write(ostream &os)
 	NetF->write(os);
 }
 
-void Model::randomize(int seed)
-{
+void Model::randomize(int seed) {
 
 	Net->initWeights(seed);
 	NetF->initWeights(seed);
 }
 
-void Model::extimation(Sequence *seq)
-{
+void Model::extimation(Sequence *seq) {
 
 	int t, y;
 
@@ -95,21 +88,17 @@ void Model::extimation(Sequence *seq)
 
 	double *app = new double[NY * (seq->length + 1)];
 
-	if (1)
-	{
+	if (1) {
 
 		sum = 0;
 
 		O = new int[seq->length + 1];
 
-		for (t = 1; t <= seq->length; t++)
-		{
+		for (t = 1; t <= seq->length; t++) {
 
 			int close = 0;
-			for (y = 0; y < NY - 1; y++)
-			{
-				if (seq->y[t] > Thresholds[y])
-				{
+			for (y = 0; y < NY - 1; y++) {
+				if (seq->y[t] > Thresholds[y]) {
 					close = y + 1;
 				}
 			}
@@ -118,10 +107,8 @@ void Model::extimation(Sequence *seq)
 		}
 
 		Net->extimation(seq->u, O, seq->length);
-		for (t = 1; t <= seq->length; t++)
-		{
-			for (c = 0; c < NY; c++)
-			{
+		for (t = 1; t <= seq->length; t++) {
+			for (c = 0; c < NY; c++) {
 				//			sum += (app[NY*t+c]-Net->out()[NY*t+c])*
 				//				(app[NY*t+c]-Net->out()[NY*t+c]);
 				app[NY * t + c] = Net->out()[NY * t + c];
@@ -133,31 +120,24 @@ void Model::extimation(Sequence *seq)
 
 		If = new double[NY * (2 * Cseg + 2) * (seq->length + 1)];
 
-		for (cycle = 1; cycle < cycles; cycle++)
-		{
+		for (cycle = 1; cycle < cycles; cycle++) {
 			sum = 0;
 
 			//	If=new double[NY*(2*Cseg+2)*(seq->length+1)];
 			memset(If, 0, NY * (2 * Cseg + 2) * sizeof(double) * (seq->length + 1));
 
-			for (t = 1; t <= seq->length; t++)
-			{
-				for (c = 0; c < NY; c++)
-				{
+			for (t = 1; t <= seq->length; t++) {
+				for (c = 0; c < NY; c++) {
 					If[(NY * (2 * Cseg + 2)) * t + c] = app[NY * t + c];
 				}
-				for (int cs = -Cseg; cs <= Cseg; cs++)
-				{
-					for (int tcs = t + cs * (2 * Cwin + 1) - Cwin; tcs <= t + cs * (2 * Cwin + 1) + Cwin; tcs++)
-					{
+				for (int cs = -Cseg; cs <= Cseg; cs++) {
+					for (int tcs = t + cs * (2 * Cwin + 1) - Cwin; tcs <= t + cs * (2 * Cwin + 1) + Cwin; tcs++) {
 						if (tcs > 0 && tcs <= seq->length)
-							for (c = 0; c < NY; c++)
-							{
+							for (c = 0; c < NY; c++) {
 								If[(NY * (2 * Cseg + 2)) * t + NY + NY * (Cseg + cs) + c] += app[NY * tcs + c] / (2 * Cwin + 1);
 							}
 						else
-							for (c = 0; c < NY; c++)
-							{
+							for (c = 0; c < NY; c++) {
 								If[(NY * (2 * Cseg + 2)) * t + NY + NY * (Cseg + cs) + c] += 0;
 							}
 					}
@@ -166,10 +146,8 @@ void Model::extimation(Sequence *seq)
 
 			NetF->extimation(If, O, seq->length);
 
-			for (t = 1; t <= seq->length; t++)
-			{
-				for (c = 0; c < NY; c++)
-				{
+			for (t = 1; t <= seq->length; t++) {
+				for (c = 0; c < NY; c++) {
 					sum += (app[NY * t + c] - NetF->out()[NY * t + c]) *
 						   (app[NY * t + c] - NetF->out()[NY * t + c]);
 					app[NY * t + c] = NetF->out()[NY * t + c];
@@ -181,32 +159,26 @@ void Model::extimation(Sequence *seq)
 		}
 		delete[] If;
 		delete[] O;
-	}
-	else
-	{
+	} else {
 	}
 	// cout << "\n"<<flush;
 	delete[] app;
 }
 
-void Model::maximization()
-{
+void Model::maximization() {
 	Net->maximization();
 	NetF->maximization();
 }
-void Model::maximizationL1()
-{
+void Model::maximizationL1() {
 	Net->maximizationL1();
 	NetF->maximizationL1();
 }
-void Model::maximizationClipped()
-{
+void Model::maximizationClipped() {
 	Net->maximizationClipped();
 	NetF->maximizationClipped();
 }
 
-void Model::predict(Sequence *seq)
-{
+void Model::predict(Sequence *seq) {
 
 	int t, y;
 	int a, c, cycle; //,m,maxm;
@@ -215,19 +187,15 @@ void Model::predict(Sequence *seq)
 	int *O;
 	double *app = new double[NY * (seq->length + 1)];
 
-	if (1)
-	{
+	if (1) {
 
 		sum = 0;
 
 		O = new int[seq->length + 1];
-		for (t = 1; t <= seq->length; t++)
-		{
+		for (t = 1; t <= seq->length; t++) {
 			int close = 0;
-			for (y = 0; y < NY - 1; y++)
-			{
-				if (seq->y[t] > Thresholds[y])
-				{
+			for (y = 0; y < NY - 1; y++) {
+				if (seq->y[t] > Thresholds[y]) {
 					close = y + 1;
 				}
 			}
@@ -236,10 +204,8 @@ void Model::predict(Sequence *seq)
 		}
 
 		Net->predict(seq->u, seq->length);
-		for (t = 1; t <= seq->length; t++)
-		{
-			for (c = 0; c < NY; c++)
-			{
+		for (t = 1; t <= seq->length; t++) {
+			for (c = 0; c < NY; c++) {
 				sum += (app[NY * t + c] - Net->out()[NY * t + c]) * (app[NY * t + c] - Net->out()[NY * t + c]);
 				app[NY * t + c] = Net->out()[NY * t + c];
 			}
@@ -248,30 +214,23 @@ void Model::predict(Sequence *seq)
 
 		If = new double[NY * (2 * Cseg + 2) * (seq->length + 1)];
 
-		for (cycle = 1; cycle < cycles; cycle++)
-		{
+		for (cycle = 1; cycle < cycles; cycle++) {
 			sum = 0;
 
 			memset(If, 0, NY * (2 * Cseg + 2) * sizeof(double) * (seq->length + 1));
 
-			for (t = 1; t <= seq->length; t++)
-			{
-				for (c = 0; c < NY; c++)
-				{
+			for (t = 1; t <= seq->length; t++) {
+				for (c = 0; c < NY; c++) {
 					If[(NY * (2 * Cseg + 2)) * t + c] = app[NY * t + c];
 				}
-				for (int cs = -Cseg; cs <= Cseg; cs++)
-				{
-					for (int tcs = t + cs * (2 * Cwin + 1) - Cwin; tcs <= t + cs * (2 * Cwin + 1) + Cwin; tcs++)
-					{
+				for (int cs = -Cseg; cs <= Cseg; cs++) {
+					for (int tcs = t + cs * (2 * Cwin + 1) - Cwin; tcs <= t + cs * (2 * Cwin + 1) + Cwin; tcs++) {
 						if (tcs > 0 && tcs <= seq->length)
-							for (c = 0; c < NY; c++)
-							{
+							for (c = 0; c < NY; c++) {
 								If[(NY * (2 * Cseg + 2)) * t + NY + NY * (Cseg + cs) + c] += app[NY * tcs + c] / (2 * Cwin + 1);
 							}
 						else
-							for (c = 0; c < NY; c++)
-							{
+							for (c = 0; c < NY; c++) {
 								If[(NY * (2 * Cseg + 2)) * t + NY + NY * (Cseg + cs) + c] += 0;
 							}
 					}
@@ -280,10 +239,8 @@ void Model::predict(Sequence *seq)
 			}
 
 			NetF->predict(If, seq->length);
-			for (t = 1; t <= seq->length; t++)
-			{
-				for (c = 0; c < NY; c++)
-				{
+			for (t = 1; t <= seq->length; t++) {
+				for (c = 0; c < NY; c++) {
 					sum += (app[NY * t + c] - NetF->out()[NY * t + c]) *
 						   (app[NY * t + c] - NetF->out()[NY * t + c]);
 					app[NY * t + c] = NetF->out()[NY * t + c];
@@ -295,15 +252,12 @@ void Model::predict(Sequence *seq)
 		delete[] O;
 	}
 
-	for (t = 1; t <= seq->length; t++)
-	{
+	for (t = 1; t <= seq->length; t++) {
 		double pred = 0.0;
 		int argp = -1;
 
-		for (int c = 0; c < NY; c++)
-		{
-			if (app[NY * t + c] > pred)
-			{
+		for (int c = 0; c < NY; c++) {
+			if (app[NY * t + c] > pred) {
 				pred = app[NY * t + c];
 				argp = c;
 			}
@@ -311,17 +265,14 @@ void Model::predict(Sequence *seq)
 		seq->y_pred[t] = argp;
 	}
 
-	for (t = 1; t <= seq->length; t++)
-	{
+	for (t = 1; t <= seq->length; t++) {
 
-		if (seq->y_pred[t] != seq->yc[t])
-		{
+		if (seq->y_pred[t] != seq->yc[t]) {
 			nerrors++;
 			nerrors_[seq->yc[t]]++;
 		}
 
-		if (seq->yc[t] != -1 && seq->y_pred[t] != -1)
-		{
+		if (seq->yc[t] != -1 && seq->y_pred[t] != -1) {
 			Conf[seq->y_pred[t]][seq->yc[t]]++;
 			counted[seq->yc[t]]++;
 		}
@@ -330,8 +281,7 @@ void Model::predict(Sequence *seq)
 	delete[] app;
 }
 
-void Model::predict(Sequence *seq, int cy)
-{
+void Model::predict(Sequence *seq, int cy) {
 	int temp = cycles;
 	cycles = cy;
 	predict(seq);

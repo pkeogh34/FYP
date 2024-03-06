@@ -21,8 +21,7 @@
 // Version 3.02
 // Added updateWeightsL1
 
-class NN
-{
+class NN {
 private:
 	int NI;
 	int NIr;
@@ -45,12 +44,10 @@ public:
 	// Number of input attributes, number of hidden units, number of output units;
 	// t_NK contains the cardinalities of the attribute spans.
 
-	NN(int t_NI, int t_NH, int t_NO, int *t_NK) : NI(t_NI), NH(t_NH), NO(t_NO)
-	{
+	NN(int t_NI, int t_NH, int t_NO, int *t_NK) : NI(t_NI), NH(t_NH), NO(t_NO) {
 		NK = new int[NI];
 		NItot = 0;
-		for (int i = 0; i < NI; i++)
-		{
+		for (int i = 0; i < NI; i++) {
 			NK[i] = t_NK[i];
 			NItot += NK[i];
 		}
@@ -72,13 +69,11 @@ public:
 	// inp = input or non-inpput network (for backprop signal)
 
 	NN(int t_NI, int t_NIr, int t_NH, int t_NO, int *t_NK,
-	   int t_outp = 1, int t_inp = 1, int t_which = 1) : NI(t_NI), NIr(t_NIr), NH(t_NH), NO(t_NO), outp(t_outp), inp(t_inp)
-	{
+	   int t_outp = 1, int t_inp = 1, int t_which = 1) : NI(t_NI), NIr(t_NIr), NH(t_NH), NO(t_NO), outp(t_outp), inp(t_inp) {
 		int i;
 		NK = new int[NI];
 		NItot = 0;
-		for (i = 0; i < NI; i++)
-		{
+		for (i = 0; i < NI; i++) {
 			NK[i] = t_NK[i];
 			NItot += NK[i];
 		}
@@ -99,8 +94,7 @@ public:
 		backprop = new double[NItot + NIr];
 	};
 
-	NN(NN *from)
-	{
+	NN(NN *from) {
 		NI = from->NI;
 		NIr = from->NIr;
 		NH = from->NH;
@@ -111,8 +105,7 @@ public:
 		int i;
 		NK = new int[NI];
 		NItot = 0;
-		for (i = 0; i < NI; i++)
-		{
+		for (i = 0; i < NI; i++) {
 			NK[i] = from->NK[i];
 			NItot += NK[i];
 		}
@@ -136,8 +129,7 @@ public:
 	// Create/read a net from file
 	NN(istream &is);
 
-	~NN()
-	{
+	~NN() {
 		delete[] NK;
 		delete[] NK2;
 		delete upper;
@@ -145,19 +137,16 @@ public:
 		delete[] backprop;
 	}
 
-	void copy_dW(NN *from)
-	{
+	void copy_dW(NN *from) {
 		upper->copy_dW(from->upper);
 		lower->copy_dW(from->lower);
 	}
 
-	void dump_dW(ostream &os)
-	{
+	void dump_dW(ostream &os) {
 		upper->dump_dW(os);
 		lower->dump_dW(os);
 	}
-	void dump_W(ostream &os)
-	{
+	void dump_W(ostream &os) {
 		upper->dump_W(os);
 		lower->dump_W(os);
 	}
@@ -170,8 +159,7 @@ public:
 	void forward(int *I1, double *I2);
 	void forward(double *I1, double *I2);
 
-	double f_cost(double *t)
-	{
+	double f_cost(double *t) {
 		return upper->f_cost(t);
 	}
 
@@ -194,13 +182,11 @@ public:
 	inline double *out() { return upper->out(); };
 	void write(ostream &os);
 
-	void set_input(int vi)
-	{
+	void set_input(int vi) {
 		lower->set_ninput(vi);
 		inp = vi;
 	}
-	void set_output(int vo)
-	{
+	void set_output(int vo) {
 		upper->set_output(vo);
 		outp = vo;
 	}
@@ -210,8 +196,7 @@ public:
 	inline int get_NO() { return NO; };
 	inline int get_NH() { return NH; };
 
-	double dlength()
-	{
+	double dlength() {
 		return upper->dlength() + lower->dlength();
 	}
 };

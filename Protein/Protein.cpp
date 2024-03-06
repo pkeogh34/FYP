@@ -4,59 +4,48 @@
 
 #include "Protein.h"
 
-std::string Protein::getId() const
-{
+std::string Protein::getId() const {
 	return id;
 }
 
-void Protein::setId(const std::string &newId)
-{
+void Protein::setId(const std::string &newId) {
 	id = newId;
 }
 
-std::string Protein::getSequence() const
-{
+std::string Protein::getSequence() const {
 	return sequence;
 }
 
-void Protein::setSequence(const std::string &newSequence)
-{
+void Protein::setSequence(const std::string &newSequence) {
 	sequence = newSequence;
 }
 
-std::string Protein::getReference() const
-{
+std::string Protein::getReference() const {
 	return reference;
 }
 
-void Protein::setReference(const std::string &newReference)
-{
+void Protein::setReference(const std::string &newReference) {
 	reference = newReference;
 }
 
-int Protein::sequenceLength() const
-{
+int Protein::sequenceLength() const {
 	return sequence.length();
 }
 
-std::unordered_map<char, int> Protein::aminoAcidFrequency() const
-{
+std::unordered_map<char, int> Protein::aminoAcidFrequency() const {
 	std::unordered_map<char, int> frequency;
-	for (char aa : sequence)
-	{
+	for (char aa : sequence) {
 		frequency[aa]++;
 	}
 	return frequency;
 }
 
-double Protein::percentageDisorder() const
-{
+double Protein::percentageDisorder() const {
 	int disorderCount = std::count(reference.begin(), reference.end(), '1');
 	return 100.0 * disorderCount / sequenceLength();
 }
 
-std::string Protein::oneHotEncode()
-{
+std::string Protein::oneHotEncode() {
 	std::string encodedSequence;
 	std::unordered_map<char, std::string> aminoAcidEncodings = {
 		{'A', "1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"},
@@ -85,17 +74,15 @@ std::string Protein::oneHotEncode()
 		{'O', "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1"},
 		{'U', "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1"},
 		{'Z', "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1"}};
-	for (const auto &aa : sequence)
-	{
-        encodedSequence += aminoAcidEncodings[aa];
-        encodedSequence += " ";
+	for (const auto &aa : sequence) {
+		encodedSequence += aminoAcidEncodings[aa];
+		encodedSequence += " ";
 	}
 
 	return encodedSequence;
 }
 
-void Protein::toString() const
-{
+void Protein::toString() const {
 	std::cout << "ID: " << id << std::endl;
 	std::cout << "Sequence: " << sequence << std::endl;
 	std::cout << "Reference: " << reference << std::endl;

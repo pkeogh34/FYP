@@ -9,8 +9,7 @@
 
 using namespace std;
 
-class Options
-{
+class Options {
 public:
 	double epsilon;
 	int NU;
@@ -44,8 +43,7 @@ public:
 	double threshold;
 	int cycles;
 
-	void write(ostream &os = cout)
-	{
+	void write(ostream &os = cout) {
 		int i;
 		cout << "epsilon " << epsilon << "\n";
 		cout << "NU " << NU << "\n";
@@ -62,8 +60,7 @@ public:
 		cout << "Cwin " << Cwin << "\n";
 		cout << "Classes " << Classes << "\n";
 		cout << "Thresholds ";
-		for (i = 0; i < Classes - 1; i++)
-		{
+		for (i = 0; i < Classes - 1; i++) {
 			cout << Thresholds[i] << " ";
 		}
 		cout << "\n";
@@ -81,13 +78,11 @@ public:
 		cout << "threshold " << threshold << "\n";
 		cout << "cycles " << cycles << "\n";
 	};
-	explicit Options(istream &is)
-	{
+	explicit Options(istream &is) {
 		int i;
 		char str[1024];
 
-		while (is)
-		{
+		while (is) {
 			is >> str;
 			if (!strcmp(str, "epsilon"))
 				is >> epsilon;
@@ -119,12 +114,10 @@ public:
 				is >> Step;
 			else if (!strcmp(str, "Classes"))
 				is >> Classes;
-			else if (!strcmp(str, "Thresholds"))
-			{
+			else if (!strcmp(str, "Thresholds")) {
 				for (i = 0; i < Classes - 1; i++)
 					is >> Thresholds[i];
-			}
-			else if (!strcmp(str, "shortcut"))
+			} else if (!strcmp(str, "shortcut"))
 				is >> shortcut;
 			else if (!strcmp(str, "seed"))
 				is >> seed;
@@ -153,45 +146,35 @@ public:
 };
 
 int Errcomp = 100000;
-void load(int epoch, Model *M)
-{
+void load(int epoch, Model *M) {
 	filebuf inbuf;
 	char fname[1024];
 	snprintf(fname, sizeof(fname), "trained-%d.model", epoch);
-	if (inbuf.open(fname, ios::in) != nullptr)
-	{
+	if (inbuf.open(fname, ios::in) != nullptr) {
 		istream is(&inbuf);
 		M->read(is);
-	}
-	else
-	{
+	} else {
 		cout << "Failed to read file " << fname;
 	}
 	inbuf.close();
 }
 
-void save(int epoch, Model *M)
-{
+void save(int epoch, Model *M) {
 	filebuf outbuf;
 	char fname[1024];
 	snprintf(fname, sizeof(fname), "trained-%d.model", epoch);
-	if (outbuf.open(fname, ios::out) != nullptr)
-	{
+	if (outbuf.open(fname, ios::out) != nullptr) {
 		ostream os(&outbuf);
 		M->write(os);
-	}
-	else
-	{
+	} else {
 		cout << "Failed to write to file " << fname;
 	}
 	outbuf.close();
 }
 
-void shuffle(DataSet &D, int *pos)
-{
+void shuffle(DataSet &D, int *pos) {
 	// Shuffle training set positions
-	for (int k = 0; k < D.length; k++)
-	{
+	for (int k = 0; k < D.length; k++) {
 		//    int p1= (int)(drand48()*D.length);
 		//    int p2= (int)(drand48()*D.length);
 		int f1 = rand();
@@ -204,40 +187,32 @@ void shuffle(DataSet &D, int *pos)
 	}
 }
 
-void save_map(int epoch, Model *M)
-{
+void save_map(int epoch, Model *M) {
 	filebuf outbuf;
 	int i, j;
 	char fname[1024];
 	snprintf(fname, sizeof(fname), "trained-%d.map", epoch);
-	if (outbuf.open(fname, ios::out) != nullptr)
-	{
+	if (outbuf.open(fname, ios::out) != nullptr) {
 		ostream os(&outbuf);
-		for (i = 0; i < 101; i++)
-		{
-			for (j = 0; j < 101; j++)
-			{
+		for (i = 0; i < 101; i++) {
+			for (j = 0; j < 101; j++) {
 				os << M->getConf()[i][j] << " ";
 			}
 			os << "\n";
 		}
-	}
-	else
-	{
+	} else {
 		cout << "Failed to read file " << fname;
 	}
 	outbuf.close();
 }
 
-void evaluate(Model *M, DataSet &D, const char *which, int cycles)
-{
+void evaluate(Model *M, DataSet &D, const char *which, int cycles) {
 	int y;
 
 	cout << "\n counting_" << which << "_errors" << flush;
 	M->resetNErrors();
 	int p;
-	for (p = 0; p < D.length; p++)
-	{
+	for (p = 0; p < D.length; p++) {
 		if (strncmp(which, "test", 4) == 0)
 			M->predict(D.seq[p], cycles);
 		else
@@ -249,8 +224,7 @@ void evaluate(Model *M, DataSet &D, const char *which, int cycles)
 	double a[128];
 	double all = 0;
 
-	for (y = 0; y < M->getClasses(); y++)
-	{
+	for (y = 0; y < M->getClasses(); y++) {
 		a[y] = M->getCounted()[y];
 		all += M->getCounted()[y];
 	}
@@ -261,15 +235,13 @@ void evaluate(Model *M, DataSet &D, const char *which, int cycles)
 
 	//  cout << "\n\n" << which << cycles << "_SError= " << sqrt(M->get_error()/all);
 
-	for (y = 0; y < M->getClasses(); y++)
-	{
+	for (y = 0; y < M->getClasses(); y++) {
 		cout << "\nClass" << y << cycles << "= " << M->getNErrors_(y) << "/" << a[y];
 		cout << "\t" << (double)M->getNErrors_(y) / (double)a[y] * 100.0;
 	}
 	//  save_map(0,M);
 
-	if ((strncmp(which, "test", 4) == 0) && (M->getNErrors() < Errcomp))
-	{
+	if ((strncmp(which, "test", 4) == 0) && (M->getNErrors() < Errcomp)) {
 		save(-10, M);
 		Errcomp = M->getNErrors();
 	}
@@ -277,8 +249,7 @@ void evaluate(Model *M, DataSet &D, const char *which, int cycles)
 	cout << "\n";
 }
 
-void train(Model *M, DataSet &D, DataSet &T, Options &Opt)
-{
+void train(Model *M, DataSet &D, DataSet &T, Options &Opt) {
 
 	int Gui = Opt.adaptive;
 	// Number of steps at increasing error before
@@ -288,16 +259,14 @@ void train(Model *M, DataSet &D, DataSet &T, Options &Opt)
 
 	double ep = Opt.epsilon / (double)D.totSize;
 	double ep0 = ep;
-	if (Opt.batch_blocks > 1)
-	{
+	if (Opt.batch_blocks > 1) {
 		ep *= (double)(Opt.batch_blocks - 1);
 	}
 	cout << "Actual lrate= " << ep << "\n";
 	M->setEpsilon(ep);
 	cout << "Start learning\n";
 	int *wait = new int[D.length];
-	for (int p = 0; p < D.length; p++)
-	{
+	for (int p = 0; p < D.length; p++) {
 		wait[p] = 0;
 	}
 	//  srand48(9199298);
@@ -308,20 +277,17 @@ void train(Model *M, DataSet &D, DataSet &T, Options &Opt)
 		pos[pp] = pp;
 	double previous_squared_error = 1e35;
 
-	for (int epoch = Opt.readEpoch + 1; epoch <= Opt.readEpoch + Opt.nEpochs; epoch++)
-	{
+	for (int epoch = Opt.readEpoch + 1; epoch <= Opt.readEpoch + Opt.nEpochs; epoch++) {
 		if (Opt.shuffle)
 			shuffle(D, pos);
 
 		M->reset_squared_error();
 		double sofar = 0;
 		int batch_cnt = 0;
-		for (int pp = 0; pp < D.length; pp++)
-		{
+		for (int pp = 0; pp < D.length; pp++) {
 			int p = pos[pp]; // drand48()*D.length;
 			wait[p]++;
-			if (wait[p] <= 0)
-			{
+			if (wait[p] <= 0) {
 				cout << p << ",";
 				continue;
 			}
@@ -331,16 +297,14 @@ void train(Model *M, DataSet &D, DataSet &T, Options &Opt)
 
 			batch_cnt++;
 			if (batch_cnt >= D.length / Opt.batch_blocks &&
-				D.length - pp >= D.length / Opt.batch_blocks)
-			{
+				D.length - pp >= D.length / Opt.batch_blocks) {
 				M->maximization();
 
 				//	cout << -M->get_squared_error() << "\n";
 				//	cout << "(" << pp << ")" << flush;
 				batch_cnt = 0;
 			}
-			if (pp % 200 == 0)
-			{
+			if (pp % 200 == 0) {
 				//		  	for (int cy=0;cy<Opt.cycles;cy++) {
 				//				cout << sqrt(M->getdcycles()[cy]/sofar) << " ";
 				//			}
@@ -353,27 +317,21 @@ void train(Model *M, DataSet &D, DataSet &T, Options &Opt)
 		double current_squared_error = M->get_squared_error();
 		cout << "\nEpoch " << epoch << " Error= " << current_squared_error << " " << M->get_squared_errorf();
 		cout << " (" << M->get_squared_errorF() << "," << M->get_squared_errorB() << ") ";
-		for (cy = 1; cy < Opt.cycles; cy++)
-		{
+		for (cy = 1; cy < Opt.cycles; cy++) {
 			cout << sqrt(M->getdcycles()[cy] / sofar) << " ";
 		}
 
-		if (current_squared_error < previous_squared_error)
-		{
+		if (current_squared_error < previous_squared_error) {
 			gui = 0;
 			save(0, M);
-			if (Gui > 0)
-			{
+			if (Gui > 0) {
 				//      ep += ep0*0.01;
 				//      M->setEpsilon(ep);
 			}
 			previous_squared_error = current_squared_error;
-		}
-		else
-		{
+		} else {
 			gui++;
-			if ((Gui) && (gui >= Gui))
-			{
+			if ((Gui) && (gui >= Gui)) {
 				gui = 0;
 				ep *= 0.5;
 				cout << "-newEpsilon(" << ep << ")" << flush;
@@ -386,11 +344,9 @@ void train(Model *M, DataSet &D, DataSet &T, Options &Opt)
 			}
 		}
 
-		if (epoch && epoch % 10 == 0)
-		{
+		if (epoch && epoch % 10 == 0) {
 			save(epoch, M);
-			for (cy = 1; cy <= Opt.cycles; cy++)
-			{
+			for (cy = 1; cy <= Opt.cycles; cy++) {
 				evaluate(M, D, "train", cy);
 				evaluate(M, T, "test", cy);
 				D.write((ostream &)"train-predictions");
@@ -402,10 +358,8 @@ void train(Model *M, DataSet &D, DataSet &T, Options &Opt)
 	}
 }
 
-int main(int argc, char **argv)
-{
-	if (argc < 2)
-	{
+int main(int argc, char **argv) {
+	if (argc < 2) {
 		cerr << "Usage: " << argv[0] << " option-file\n";
 		exit(1);
 	}
@@ -414,16 +368,13 @@ int main(int argc, char **argv)
 	Opt.write();
 
 	Model *M;
-	if (Opt.readModel)
-	{
+	if (Opt.readModel) {
 		char tmp[1024];
 		snprintf(tmp, sizeof(tmp), "trained-%d.model", Opt.readEpoch);
 		cout << "Reading model from " << tmp << "\n";
 		ifstream mstream(tmp);
 		M = new Model(mstream);
-	}
-	else
-	{
+	} else {
 		cout << "Creating model\n"
 			 << flush;
 

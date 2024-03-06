@@ -32,8 +32,7 @@ using namespace std;
 // In version 3.03:
 // -gradient fixed for softmax: (y-t)x, no f1
 
-class Layer
-{
+class Layer {
 public:
 	int NY;
 	int NU;
@@ -66,8 +65,7 @@ public:
 	void softmax();
 	void squash();
 
-	Layer(Layer *from)
-	{
+	Layer(Layer *from) {
 		int y;
 		NY = from->NY;
 		NU = from->NU;
@@ -83,18 +81,15 @@ public:
 		output = 0;
 
 		NUplain = 0;
-		for (int u = 0; u < NU; u++)
-		{
+		for (int u = 0; u < NU; u++) {
 			NUplain += NK[u];
 		}
 
-		for (y = 0; y < NY; y++)
-		{
+		for (y = 0; y < NY; y++) {
 			B[y] = from->B[y];
 			dB[y] = 0;
 			d2B[y] = 0;
-			for (int u = 0; u < NUtot; u++)
-			{
+			for (int u = 0; u < NUtot; u++) {
 				W[y * NUtot + u] = from->W[y * NUtot + u];
 				dW[y * NUtot + u] = 0;
 				d2W[y * NUtot + u] = 0;
@@ -102,46 +97,36 @@ public:
 		}
 	}
 
-	void copy_dW(Layer *from)
-	{
-		for (int y = 0; y < NY; y++)
-		{
+	void copy_dW(Layer *from) {
+		for (int y = 0; y < NY; y++) {
 			dB[y] += from->dB[y];
 			//		cout << from->dB[y] << " ";
-			for (int u = 0; u < NUtot; u++)
-			{
+			for (int u = 0; u < NUtot; u++) {
 				dW[y * NUtot + u] += from->dW[y * NUtot + u];
 			}
 		}
 	}
 
-	void dump_dW(ostream &os)
-	{
-		for (int y = 0; y < NY; y++)
-		{
+	void dump_dW(ostream &os) {
+		for (int y = 0; y < NY; y++) {
 			os << dB[y] << " ";
-			for (int u = 0; u < NUtot; u++)
-			{
+			for (int u = 0; u < NUtot; u++) {
 				os << dW[y * NUtot + u] << " ";
 			}
 			os << "\n";
 		}
 	}
-	void dump_W(ostream &os)
-	{
-		for (int y = 0; y < NY; y++)
-		{
+	void dump_W(ostream &os) {
+		for (int y = 0; y < NY; y++) {
 			os << B[y] << " ";
-			for (int u = 0; u < NUtot; u++)
-			{
+			for (int u = 0; u < NUtot; u++) {
 				os << W[y * NUtot + u] << " ";
 			}
 			os << "\n";
 		}
 	}
 
-	~Layer()
-	{
+	~Layer() {
 		delete[] NK;
 		delete[] Y;
 		delete[] A;
@@ -161,8 +146,7 @@ public:
 	// Constructor
 	// Categorical inputs
 
-	Layer(int t_NY, int *t_NK, int t_NU) : NY(t_NY), NU(t_NU)
-	{
+	Layer(int t_NY, int *t_NK, int t_NU) : NY(t_NY), NU(t_NU) {
 		NK = new int[NU];
 		for (int i = 0; i < NU; i++)
 			NK[i] = t_NK[i];
@@ -171,8 +155,7 @@ public:
 		output = 0;
 
 		NUplain = 0;
-		for (int u = 0; u < NU; u++)
-		{
+		for (int u = 0; u < NU; u++) {
 			NUplain += NK[u];
 		}
 	}
@@ -180,8 +163,7 @@ public:
 	// Constructor
 	// Real-valued inputs
 
-	Layer(int t_NY, int t_NU) : NY(t_NY), NU(t_NU)
-	{
+	Layer(int t_NY, int t_NU) : NY(t_NY), NU(t_NU) {
 		NK = new int[NU];
 		for (int i = 0; i < NU; i++)
 			NK[i] = 1;
@@ -191,8 +173,7 @@ public:
 		output = 0;
 
 		NUplain = 0;
-		for (int u = 0; u < NU; u++)
-		{
+		for (int u = 0; u < NU; u++) {
 			NUplain += NK[u];
 		}
 		// cout << NUplain << " " << NUtot << "a " << flush;
@@ -201,8 +182,7 @@ public:
 	// Constructor
 	// Mixed inputs (NU categorical attributes, NUr real-valued)
 
-	Layer(int t_NY, int *t_NK, int t_NU, int t_NUr) : NY(t_NY), NU(t_NU), NUr(t_NUr)
-	{
+	Layer(int t_NY, int *t_NK, int t_NU, int t_NUr) : NY(t_NY), NU(t_NU), NUr(t_NUr) {
 		int i;
 		NK = new int[NU + NUr];
 		for (i = 0; i < NU; i++)
@@ -214,8 +194,7 @@ public:
 		output = 0;
 
 		NUplain = 0;
-		for (int u = 0; u < NU; u++)
-		{
+		for (int u = 0; u < NU; u++) {
 			NUplain += NK[u];
 		}
 		// cout << NY << " " << flush;
@@ -224,13 +203,11 @@ public:
 
 	Layer(istream &is);
 
-	void set_ninput(int vi)
-	{
+	void set_ninput(int vi) {
 		ninput = vi;
 	};
 
-	void set_output(int vo)
-	{
+	void set_output(int vo) {
 		output = vo;
 	};
 
@@ -278,50 +255,35 @@ public:
 	void set_dW(double *newdW);
 };
 
-class Layer_tanh : public Layer
-{
+class Layer_tanh : public Layer {
 
 public:
-	Layer_tanh(int t_NY, int *t_NK, int t_NU) : Layer(t_NY, t_NK, t_NU)
-	{
-	}
+	Layer_tanh(int t_NY, int *t_NK, int t_NU) : Layer(t_NY, t_NK, t_NU) {}
 
-	Layer_tanh(int t_NY, int t_NU) : Layer(t_NY, t_NU)
-	{
-	}
+	Layer_tanh(int t_NY, int t_NU) : Layer(t_NY, t_NU) {}
 
-	Layer_tanh(int t_NY, int *t_NK, int t_NU, int t_NUr) : Layer(t_NY, t_NK, t_NU, t_NUr)
-	{
-	}
+	Layer_tanh(int t_NY, int *t_NK, int t_NU, int t_NUr) : Layer(t_NY, t_NK, t_NU, t_NUr) {}
 
-	Layer_tanh(istream &is) : Layer(is)
-	{
-	}
+	Layer_tanh(istream &is) : Layer(is) {}
 
-	Layer_tanh(Layer *from) : Layer(from)
-	{
-	}
+	Layer_tanh(Layer *from) : Layer(from) {}
 
-	void forward(int *I)
-	{
+	void forward(int *I) {
 		Layer::forward(I);
 		squash();
 	}
 
-	void forward(double *I)
-	{
+	void forward(double *I) {
 		Layer::forward(I);
 		squash();
 	}
 
-	void forward(int *I1, double *I2)
-	{
+	void forward(int *I1, double *I2) {
 		Layer::forward(I1, I2);
 		squash();
 	}
 
-	void forward(double *I1, double *I2)
-	{
+	void forward(double *I1, double *I2) {
 		Layer::forward(I1, I2);
 		squash();
 	}
@@ -332,8 +294,7 @@ public:
 	// squash();
 	// }
 
-	double backward(double *t, double weight = 1.0)
-	{
+	double backward(double *t, double weight = 1.0) {
 		return Layer::backward(t, weight);
 	}
 
@@ -341,61 +302,44 @@ public:
 
 	double f_cost(double *t);
 
-	void initWeights(int seed)
-	{
+	void initWeights(int seed) {
 		Layer::initWeights(seed);
 	}
 
-	void updateWeights(double epsilon)
-	{
+	void updateWeights(double epsilon) {
 		Layer::updateWeights(epsilon);
 	}
 };
 
-class Layer_soft : public Layer
-{
+class Layer_soft : public Layer {
 
 public:
-	Layer_soft(int t_NY, int *t_NK, int t_NU) : Layer(t_NY, t_NK, t_NU)
-	{
-	}
+	Layer_soft(int t_NY, int *t_NK, int t_NU) : Layer(t_NY, t_NK, t_NU) {}
 
-	Layer_soft(int t_NY, int t_NU) : Layer(t_NY, t_NU)
-	{
-	}
+	Layer_soft(int t_NY, int t_NU) : Layer(t_NY, t_NU) {}
 
-	Layer_soft(int t_NY, int *t_NK, int t_NU, int t_NUr) : Layer(t_NY, t_NK, t_NU, t_NUr)
-	{
-	}
+	Layer_soft(int t_NY, int *t_NK, int t_NU, int t_NUr) : Layer(t_NY, t_NK, t_NU, t_NUr) {}
 
-	Layer_soft(istream &is) : Layer(is)
-	{
-	}
+	Layer_soft(istream &is) : Layer(is) {}
 
-	Layer_soft(Layer *from) : Layer(from)
-	{
-	}
+	Layer_soft(Layer *from) : Layer(from) {}
 
-	void forward(int *I)
-	{
+	void forward(int *I) {
 		Layer::forward(I);
 		softmax();
 	}
 
-	void forward(double *I)
-	{
+	void forward(double *I) {
 		Layer::forward(I);
 		softmax();
 	}
 
-	void forward(int *I1, double *I2)
-	{
+	void forward(int *I1, double *I2) {
 		Layer::forward(I1, I2);
 		softmax();
 	}
 
-	void forward(double *I1, double *I2)
-	{
+	void forward(double *I1, double *I2) {
 		Layer::forward(I1, I2);
 		softmax();
 	}
@@ -412,13 +356,11 @@ public:
 
 	double f_cost(double *t);
 
-	void initWeights(int seed)
-	{
+	void initWeights(int seed) {
 		Layer::initWeights(seed);
 	}
 
-	void updateWeights(double epsilon)
-	{
+	void updateWeights(double epsilon) {
 		Layer::updateWeights(epsilon);
 	}
 };
