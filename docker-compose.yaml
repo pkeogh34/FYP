@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  brnn:
+    build: ./BRNN
+    volumes:
+      - ./data:/app/data
+      - ./train.data:/app/train.data
+
+  dnn:
+    build: ./DNN
+    volumes:
+      - ./data:/app/data
+      - ./train.data:/app/train.data
+
+volumes:
+  data:
