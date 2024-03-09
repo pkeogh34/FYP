@@ -27,24 +27,24 @@ These instructions will help you set up the project and run it on your local mac
    `docker-compose up --build`
 
 ## Usage
-- **Running the Modern Formatted Protein Models**:  
-   [Instructions on how to run the models with the modern dataset.]
-- **Applying Evolutionary Scale Modeling**:  
-   [Steps to execute the models with evolutionary scale modeling.]
-- **Comparison and Analysis**:  
-   [Guidelines on how to compare the results from both runs and analyze them.]
+- **Set parameters for the model in the corresponding options file:**
+
+  Each model has a corresponding options file that controls parameters for the model training
+   e.g learning rate, num hidden layers etc.
+- **Exec into the docker container for the model you wish to train:**
+  - `docker exec -it fyp-brnn-1 /bin/bash`
+  - `docker exec -it fyp-dnn-1 /bin/bash`
+- **Run the command to start the model using the corresponding options file**:  
+   - `./TrainBRNN ./Options.txt`
+   - `./TrainDNN ./Options_1l.txt`
 
 ## Data
-[Explain the datasets used, including where to find them or how they are generated. Include any steps for preprocessing or formatting the data.]
 
 ## Models
-[Detail on the BRNN and DNN models, including their architecture, training process, and any specific configurations or parameters used.]
 
 ## Results
-[Provide a summary of the findings or link to a results file/directory.]
 
 ## Acknowledgements
-[Credits to any collaborators, advisors, or institutions that supported this project.]
 
 ## Contact Information
 - **Student**: Patrick Ross Keogh
