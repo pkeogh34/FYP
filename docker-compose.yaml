@@ -1,16 +1,24 @@
 version: '3.8'
 services:
   brnn:
-    build: ./BRNN
+    build:
+      context: .
+      dockerfile: BRNN_parallel3.1/Dockerfile
     volumes:
       - ./data:/app/data
-      - ./train.data:/app/train.data
+      - ./train.dataset:/app/train.dataset
+    command: tail -f /dev/null
 
   dnn:
-    build: ./DNN
+    build:
+      context: .
+      dockerfile: DNN_n-to-n_1layer/Dockerfile
     volumes:
       - ./data:/app/data
-      - ./train.data:/app/train.data
+      - ./train.dataset:/app/train.dataset
+    command: tail -f /dev/null
 
 volumes:
   data:
+
+

@@ -1,13 +1,13 @@
-# Use an official base image with C++ compiler
+# Start from a base image with C++ compiler
 FROM gcc:latest
 
-# Copy the DNN model files into the container
-COPY Train.cxx Options.txt ./
-COPY ../train.data ./
+# Set the working directory in the container
+WORKDIR /app
 
-# Compile DNN model
-RUN g++ -fopenmp -o TrainDNN Train.cxx
+# Copy the entire DNN_n-to-n_1layer directory contents into the container at /app
+COPY DNN_n-to-n_1layer/ ./
 
-# Command to run when the container starts
-CMD ["./TrainDNN"]
+# Compile your program
+RUN g++ -fopenmp -o TrainDNN Train.cxx NN.cxx NN1.cxx NNt.cxx NNt1.cxx DNN1.cxx Layer.cxx Model.cxx
+
 

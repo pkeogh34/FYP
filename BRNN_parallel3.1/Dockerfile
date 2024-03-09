@@ -1,12 +1,11 @@
-# Use an official base image with C++ compiler
+# Start from a base image with C++ compiler
 FROM gcc:latest
 
-# Copy the BRNN model files into the container
-COPY Train.cxx Options.txt ./
-COPY ../train.data ./
+# Set the working directory in the container
+WORKDIR /app
 
-# Compile BRNN model
-RUN g++ -fopenmp -o TrainBRNN Train.cxx
+# Copy the entire BRNN_parallel3.1 directory contents into the container at /app
+COPY BRNN_parallel3.1/ ./
 
-# Command to run when the container starts
-CMD ["./TrainBRNN"]
+# Compile your program
+RUN g++ -fopenmp -o TrainBRNN Train.cxx NN.cxx NNt.cxx BRNN.cxx Layer.cxx Model.cxx
