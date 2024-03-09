@@ -7,6 +7,7 @@ services:
     volumes:
       - ./data:/app/data
       - ./train.dataset:/app/train.dataset
+      - ./test.dataset:/app/test.dataset
     command: tail -f /dev/null
 
   dnn:
@@ -16,6 +17,7 @@ services:
     volumes:
       - ./data:/app/data
       - ./train.dataset:/app/train.dataset
+      - ./test.dataset:/app/test.dataset
     command: tail -f /dev/null
 
 volumes:

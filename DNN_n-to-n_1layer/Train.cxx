@@ -134,7 +134,7 @@ void load(int epoch, Model *M) {
 void save(int epoch, Model *M) {
 	filebuf outbuf;
 	char fname[1024];
-	snprintf(fname, sizeof(fname), "trained-%d.model", epoch);
+	snprintf(fname, sizeof(fname), "/app/data/trained-%d.model", epoch);
 	if (outbuf.open(fname, ios::out) != 0) {
 		ostream os(&outbuf);
 		M->write(os);
@@ -166,7 +166,7 @@ save_map(int epoch, Model* M)
   filebuf outbuf;
   int i,j;
   char fname[1024];
-  sprintf(fname, "trained-%d.map", epoch);
+  snprintf(fname, sizeof(fname), "trained-%d.map", epoch);
   if (outbuf.open(fname, ios::out) != 0) {
 	ostream os(&outbuf);
 	for (i=0;i<101;i++) {
@@ -348,12 +348,22 @@ int main(int argc, char **argv) {
 	cout << "Reading train dataset\n"
 		 << flush;
 	ifstream dstream("train.dataset");
+	if (!dstream.is_open()) {
+		cerr << "Error opening 'train.dataset': " << strerror(errno) << endl;
+		return 1;
+	}
 	DataSet D(dstream);
+	dstream.close();
 
 	cout << "Reading test dataset\n"
 		 << flush;
 	ifstream tstream("test.dataset");
+	if (!tstream) {
+		cerr << "Error opening 'test.dataset': " << strerror(errno) << endl;
+		return 1;
+	}
 	DataSet T(tstream);
+	tstream.close();
 
 	train(M, D, T, Opt);
 

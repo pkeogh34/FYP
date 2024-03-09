@@ -1,8 +1,8 @@
 //
 // Created by Patrick Ross Keogh on 01/03/2024.
 //
-#include "DataExploration/DataExploration.h"
-#include "Protein/Protein.h"
+#include "../DataExploration/DataExploration.h"
+#include "../Protein/Protein.h"
 #include <fstream>
 #include <iostream>
 #include <string>

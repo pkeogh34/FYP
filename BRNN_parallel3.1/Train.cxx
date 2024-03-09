@@ -1,4 +1,3 @@
-
 #include <cstring>
 #include <iostream>
 
@@ -153,7 +152,7 @@ int Errcomp = 10000000;
 void load(int epoch, Model *M) {
 	filebuf inbuf;
 	char fname[1024];
-	snprintf(fname, sizeof(fname), "trained-%d.model", epoch);
+	snprintf(fname, sizeof(fname), "/app/data/trained-%d.model", epoch);
 	if (inbuf.open(fname, ios::in) != nullptr) {
 		istream is(&inbuf);
 		M->read(is);
@@ -166,7 +165,7 @@ void load(int epoch, Model *M) {
 void save(int epoch, Model *M) {
 	filebuf outbuf;
 	char fname[1024];
-	snprintf(fname, sizeof(fname), "trained-%d.model", epoch);
+	snprintf(fname, sizeof(fname), "/app/data/trained-%d.model", epoch);
 	if (outbuf.open(fname, ios::out) != nullptr) {
 		ostream os(&outbuf);
 		M->write(os);
@@ -195,7 +194,7 @@ void save_map(int epoch, Model *M) {
 	filebuf outbuf;
 	int i, j;
 	char fname[1024];
-	snprintf(fname, sizeof(fname), "trained-%d.map", epoch);
+	snprintf(fname, sizeof(fname), "/app/data/trained-%d.map", epoch);
 	if (outbuf.open(fname, ios::out) != nullptr) {
 		ostream os(&outbuf);
 		for (i = 0; i < 101; i++) {
@@ -410,7 +409,7 @@ int main(int argc, char **argv) {
 	Model *M;
 	if (Opt.readModel) {
 		char tmp[1024];
-		snprintf(tmp, sizeof(tmp), "trained-%d.model", Opt.readEpoch);
+		snprintf(tmp, sizeof(tmp), "/app/data/trained-%d.model", Opt.readEpoch);
 		cout << "Reading model from " << tmp << "\n";
 		ifstream mstream(tmp);
 		M = new Model(mstream);
@@ -431,15 +430,22 @@ int main(int argc, char **argv) {
 	cout << "Reading train dataset\n"
 		 << flush;
 	ifstream dstream("train.dataset");
+	if (!dstream.is_open()) {
+		cerr << "Error opening 'train.dataset': " << strerror(errno) << endl;
+		return 1;
+	}
 	DataSet D(dstream);
-	//  D.set_belief(Opt.belief);
+	dstream.close();
+
 	cout << "Reading test dataset\n"
 		 << flush;
 	ifstream tstream("test.dataset");
+	if (!tstream) {
+		cerr << "Error opening 'test.dataset': " << strerror(errno) << endl;
+		return 1;
+	}
 	DataSet T(tstream);
-	//  T.set_belief(Opt.belief);
+	tstream.close();
 
 	train(M, D, T, Opt);
-
-	return 0;
 }

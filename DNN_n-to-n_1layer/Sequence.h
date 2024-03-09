@@ -171,15 +171,25 @@ public:
 
 	explicit DataSet(istream &is, int quot = 0) {
 		totSize = 0;
-		is >> length;
+		if (!(is >> length)) {
+			cerr << "Error reading length from stream. Error: " << strerror(errno) << endl;
+			return;
+		}
 
-		is >> attributes >> classes;
+		if (!(is >> attributes >> classes)) {
+			cerr << "Error reading attributes and classes from stream." << endl;
+			return;
+		}
 
 		cout << length << " sequences, " << attributes << " attributes, " << classes << " classes\n"
 			 << flush;
 		seq = new Sequence *[length];
 		for (int p = 0; p < length; p++) {
 			seq[p] = new Sequence(is, attributes, classes, quot);
+			if (seq[p] == nullptr) {
+				cerr << "Error reading sequence " << p << endl;
+				break;
+			}
 			totSize += seq[p]->length;
 		}
 	};

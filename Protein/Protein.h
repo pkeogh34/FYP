@@ -28,8 +28,6 @@ public:
 
 	std::unordered_map<char, int> aminoAcidFrequency() const;
 
-	double percentageDisorder() const;
-
 	std::string oneHotEncode();
 
 	void toString() const;
