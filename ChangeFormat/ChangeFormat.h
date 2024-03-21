@@ -7,11 +7,18 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <vector>
+#include <memory>
+#include <algorithm>
+#include <random>
 
 #ifndef FYP_CHANGEFORMAT_H
 #define FYP_CHANGEFORMAT_H
 
-void outputModifiedProteins(std::vector<std::unique_ptr<Protein>> &proteins);
+void outputModifiedProteins(std::vector<std::unique_ptr<Protein>> &proteins, const std::string& filePath);
+void splitData(std::vector<std::unique_ptr<Protein>>& data,
+               std::vector<std::unique_ptr<Protein>>& train,
+               std::vector<std::unique_ptr<Protein>>& test);
 std::string decodeSequence(const std::string &encodedSequence);
 
 #endif // FYP_CHANGEFORMAT_H

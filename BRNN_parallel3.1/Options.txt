@@ -15,8 +15,8 @@ Cseg    10
 Cwin    7
 cycles  1
 
-Classes 3
-Thresholds 0.5 1.5
+Classes 2
+Thresholds 0.5
 
 Step    1
 shortcut 0

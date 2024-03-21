@@ -3,9 +3,34 @@
 //
 
 #include "ChangeFormat.h"
+void splitData(std::vector<std::unique_ptr<Protein>>& data,
+               std::vector<std::unique_ptr<Protein>>& train,
+               std::vector<std::unique_ptr<Protein>>& test) {
 
-void outputModifiedProteins(std::vector<std::unique_ptr<Protein>> &proteins) {
-	std::ofstream outfile("encoded_sequence.txt");
+    // Shuffle the data to ensure random distribution
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(data.begin(), data.end(), g);
+
+    // Calculate the size of the training set (75% of the data)
+    size_t train_size = data.size() * 0.75;
+
+    // Move the first 75% of the elements to the training set
+    for (size_t i = 0; i < train_size; ++i) {
+        train.push_back(std::move(data[i]));
+    }
+
+    // Move the remaining 25% to the testing set
+    for (size_t i = train_size; i < data.size(); ++i) {
+        test.push_back(std::move(data[i]));
+    }
+
+    // Clear the original data vector
+    data.clear();
+}
+
+void outputModifiedProteins(std::vector<std::unique_ptr<Protein>> &proteins, const std::string& filePath) {
+	std::ofstream outfile(filePath);
 	outfile << proteins.size() << std::endl;
 	outfile << "21" << std::endl;
 	for (const auto &protein : proteins) {

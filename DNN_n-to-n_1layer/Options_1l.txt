@@ -8,8 +8,8 @@ Hi	9
 gamma	7
 context 0
 
-Classes 3
-Thresholds 0.5 1.5
+Classes 2
+Thresholds 0.5
 
 DEEP	0
 

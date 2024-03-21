@@ -12,8 +12,13 @@ int main() {
 	}
 
 	std::vector<std::unique_ptr<Protein>> data = parseJsonArray(jsonContent);
+    std::vector<std::unique_ptr<Protein>> train;
+    std::vector<std::unique_ptr<Protein>> test;
 
-	std::cout << data.at(0)->getReference().length() / data.at(0)->sequenceLength() << std::endl;
+    splitData(data, train, test);
 
-	outputModifiedProteins(data);
+	outputModifiedProteins(train, "train.dataset");
+    outputModifiedProteins(test, "test.dataset");
+
+    return 0;
 }
