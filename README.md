@@ -37,6 +37,9 @@ These instructions will help you set up the project and run it on your local mac
 - **Run the command to start the model using the corresponding options file**:  
    - `./Train ./Options.txt`
    - `./Train ./Options_1l.txt`
+- **Or alternatively to run in the background and output to a textfile:**
+   - docker exec fyp-brnn-1 sh -c '/app/Train /app/Options.txt > /app/data/brnn_output.txt 2>&1'
+   - docker exec fyp-dnn-1 sh -c '/app/Train /app/Options_1l.txt > /app/data/dnn_output.txt 2>&1'
 
 ## Data
 
